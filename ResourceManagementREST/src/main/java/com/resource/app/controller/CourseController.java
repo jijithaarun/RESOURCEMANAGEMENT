@@ -22,19 +22,18 @@ public class CourseController {
 	@Autowired
 	private iCourseService courseService;
 
-	//adding the course details
+	// adding the course details
 	@PostMapping("course")
 	public ResponseEntity<Course> addCourse(Course course) {
 		return new ResponseEntity<Course>(courseService.addCourse(course), HttpStatus.OK);
 
 	}
-	
-	//get all the course
+
+	// get all the course
 	@GetMapping("course")
-	public ResponseEntity<List<Course>> listAllCourses()
-	{
-		return new ResponseEntity<List<Course>>(courseService.listAllCourse(),HttpStatus.OK);
-		
+	public ResponseEntity<List<Course>> listAllCourses() {
+		return new ResponseEntity<List<Course>>(courseService.listAllCourse(), HttpStatus.OK);
+
 	}
 
 }

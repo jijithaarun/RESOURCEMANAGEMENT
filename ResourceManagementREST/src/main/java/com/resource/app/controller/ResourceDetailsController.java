@@ -33,7 +33,7 @@ public class ResourceDetailsController {
 	}
 
 	// edit resourceDetails
-	@PutMapping("resourcedetails/{resourceId}")
+	@PutMapping("resourcedetails")
 	public ResponseEntity<ResourceDetails> updateResource(@RequestBody ResourceDetails resource) {
 		return new ResponseEntity<ResourceDetails>(resourceDetailsService.updateResource(resource), HttpStatus.OK);
 	}
