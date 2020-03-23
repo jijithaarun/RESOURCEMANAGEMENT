@@ -80,7 +80,7 @@ public class ResourceController {
 	}
 	
 	// edit resource
-	@PutMapping("resource/{resourceTypeId}")
+	@PutMapping("resource")
 	public ResponseEntity<Resource> updateResource(@RequestBody Resource resource) {
 		return new ResponseEntity<Resource>(resourceService.updateResource(resource), HttpStatus.OK);
 	}

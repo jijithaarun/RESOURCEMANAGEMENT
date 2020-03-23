@@ -1,7 +1,7 @@
 package com.resource.app.model;
 
 import java.sql.Blob;
-import java.sql.Date;
+
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.data.annotation.CreatedDate;
+
 
 @Entity
 public class Registration {

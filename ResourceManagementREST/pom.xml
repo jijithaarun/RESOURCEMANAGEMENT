@@ -16,7 +16,8 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-	</properties>
+    <start-class>com.resource.app.ResourceManagementRestApplication</start-class>
+</properties>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jasper -->
