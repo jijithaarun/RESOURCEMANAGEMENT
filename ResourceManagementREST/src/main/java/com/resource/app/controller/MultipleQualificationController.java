@@ -23,7 +23,7 @@ public class MultipleQualificationController {
 	private iMultipleQualificatonService qualificationService;
 
 	// adding the qualification details
-	@PostMapping("qualification")
+	@PostMapping("multiple")
 	public ResponseEntity<MultipleQualification> addPayment(MultipleQualification qualification) {
 		return new ResponseEntity<MultipleQualification>(qualificationService.addQualification(qualification),
 				HttpStatus.OK);
@@ -31,7 +31,7 @@ public class MultipleQualificationController {
 	}
 
 	// get all the qualification details
-	@GetMapping("qualification")
+	@GetMapping("multiple")
 	public ResponseEntity<List<MultipleQualification>> listQualification() {
 		return new ResponseEntity<List<MultipleQualification>>(qualificationService.listAllQualification(),
 				HttpStatus.OK);
