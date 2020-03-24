@@ -22,7 +22,7 @@ public class CoordinatorService implements iCoordinatorService {
 		
 		return coordinatorRepo.save(coordinator);
 	}
-	//list
+	//list coordinator
 
 	@Override
 	public List<Coordinator> listCoordinator() {
