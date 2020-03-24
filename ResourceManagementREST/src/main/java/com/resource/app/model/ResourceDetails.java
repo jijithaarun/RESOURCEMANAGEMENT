@@ -41,8 +41,6 @@ public class ResourceDetails {
 	@Column(nullable = false) // create column with not null
 	private Float resourceRate;
 
-	
-	@Column(nullable = false) // create column with not null
 	private String typeOfUse;
 	private Character isAccepted;
 	private Character isBooked;
