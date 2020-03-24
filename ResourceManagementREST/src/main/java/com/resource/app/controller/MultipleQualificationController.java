@@ -17,7 +17,7 @@ import com.resource.app.service.iMultipleQualificatonService;
 @RestController
 @RequestMapping("/")
 public class MultipleQualificationController {
-
+//object of service
 	@Autowired
 	private iMultipleQualificatonService qualificationService;
 
