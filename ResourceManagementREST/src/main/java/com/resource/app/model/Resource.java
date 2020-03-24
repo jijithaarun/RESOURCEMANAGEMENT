@@ -16,7 +16,7 @@ public class Resource {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long resourceTypeId;
 	
-	@Column(nullable = false)//create column with not null
+	@Column(nullable = false,length=20)//create column with not null
 	private String resourceType;
 	
 	

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +25,7 @@ public class QualificationController {
 
 	// adding qualification
 	@PostMapping("qualification")
-	public ResponseEntity<Qualification> addQualification(Qualification qualification) {
+	public ResponseEntity<Qualification> addQualification(@RequestBody Qualification qualification) {
 		return new ResponseEntity<Qualification>(qualificationService.addQualification(qualification), HttpStatus.OK);
 
 	}

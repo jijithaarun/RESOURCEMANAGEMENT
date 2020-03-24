@@ -9,6 +9,9 @@ import com.resource.app.model.ResourceDetails;
 
 public interface iResourceDetailsRepo extends JpaRepositoryImplementation<ResourceDetails, Long> {
 
+	@Query("from ResourceDetails order by resourceId desc")
+	List<ResourceDetails> listAllResource();
+
 	@Query("from ResourceDetails WHERE resource.resourceType=?1")
 	List<ResourceDetails> findByResource(String resourceName);
 

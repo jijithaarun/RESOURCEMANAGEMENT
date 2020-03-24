@@ -24,10 +24,10 @@ public class ResourceDetails {
 	@JoinColumn(name = "resourceTypeId")
 	private Resource resource;
 
-	@Column(nullable = false) // create column with not null
+	@Column(nullable = false,length=8) // create column with not null
 	private Integer resourceCapacity;
 
-	@Column(nullable = false) // create column with not null
+	@Column(nullable = false,length=8) // create column with not null
 	private Integer noOfSystems;
 
 	@Column(nullable = false) // create column with not null
@@ -41,6 +41,7 @@ public class ResourceDetails {
 	@Column(nullable = false) // create column with not null
 	private Float resourceRate;
 
+	
 	@Column(nullable = false) // create column with not null
 	private String typeOfUse;
 	private Character isAccepted;
