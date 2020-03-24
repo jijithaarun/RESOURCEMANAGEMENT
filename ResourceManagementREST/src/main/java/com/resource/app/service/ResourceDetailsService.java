@@ -55,7 +55,7 @@ public class ResourceDetailsService implements iResourceDetailsService {
 	@Override
 	public List<ResourceDetails> listAllResource() {
 
-		return resourceDetailsRepo.findAll();
+		return resourceDetailsRepo.listAllResource();
 	}
 
 	@Override

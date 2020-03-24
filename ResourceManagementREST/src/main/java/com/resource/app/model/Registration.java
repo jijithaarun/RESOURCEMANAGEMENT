@@ -1,9 +1,7 @@
 package com.resource.app.model;
 
 import java.sql.Blob;
-
-import java.util.Calendar;
-
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-
 
 @Entity
 public class Registration {
@@ -23,8 +17,7 @@ public class Registration {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer registrationId;
 
-	@Temporal(TemporalType.DATE)
-	private Calendar registrationDate;
+	private LocalDate registrationDate=LocalDate.now();
 
 	@Column(nullable = false)
 	private String name;
@@ -64,11 +57,11 @@ public class Registration {
 		this.registrationId = registrationId;
 	}
 
-	public Calendar getRegistrationDate() {
+	public LocalDate getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(Calendar registrationDate) {
+	public void setRegistrationDate(LocalDate registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
