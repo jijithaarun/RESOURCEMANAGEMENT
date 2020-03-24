@@ -20,5 +20,7 @@ public interface iResourceDetailsService {
 	public void updateIsBooked(Character isBooked, Long resourceId);
 	
 	public void updateIsAccepted(Character isAccepted, Long resourceId);
+	
+	public List<ResourceDetails> listResourceDetails();
 
 }

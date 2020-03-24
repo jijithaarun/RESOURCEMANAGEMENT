@@ -11,6 +11,9 @@ public interface iResourceDetailsRepo extends JpaRepositoryImplementation<Resour
 
 	@Query("from ResourceDetails order by resourceId desc")
 	List<ResourceDetails> listAllResource();
+	
+	@Query("from ResourceDetails where isActive='Y'")
+	List<ResourceDetails> listResourcedetails();
 
 	@Query("from ResourceDetails WHERE resource.resourceType=?1")
 	List<ResourceDetails> findByResource(String resourceName);

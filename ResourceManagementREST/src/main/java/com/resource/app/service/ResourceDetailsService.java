@@ -72,4 +72,10 @@ public class ResourceDetailsService implements iResourceDetailsService {
 
 	}
 
+	@Override
+	public List<ResourceDetails> listResourceDetails() {
+	
+		return resourceDetailsRepo.listResourcedetails();
+	}
+
 }
