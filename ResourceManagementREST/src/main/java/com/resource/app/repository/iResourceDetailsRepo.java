@@ -12,7 +12,7 @@ public interface iResourceDetailsRepo extends JpaRepositoryImplementation<Resour
 	@Query("from ResourceDetails order by resourceId desc")
 	List<ResourceDetails> listAllResource();
 	
-	@Query("from ResourceDetails where isActive='Y'")
+	@Query("from ResourceDetails where pending='Y'")
 	List<ResourceDetails> listResourcedetails();
 
 	@Query("from ResourceDetails WHERE resource.resourceType=?1")

@@ -49,21 +49,36 @@ public class BookingDetails {
 	@Column(nullable = false) // create column with not null
 	private String purpose;
 
-	@ColumnDefault(value = " 'Y' ")
 	private Character bookingStatus;
+	
+	private Character pending;
 
 	public BookingDetails() {
 		super();
 
 	}
-
-	public Long getBookingid() {
+	public Long getBookingId() {
 		return bookingId;
 	}
 
-	public void setBookingid(Long bookingId) {
+
+	public void setBookingId(Long bookingId) {
 		this.bookingId = bookingId;
 	}
+
+
+
+	public Character getPending() {
+		return pending;
+	}
+
+
+
+	public void setPending(Character pending) {
+		this.pending = pending;
+	}
+
+
 
 	public ResourceDetails getResourceDetails() {
 		return resourceDetails;
@@ -136,5 +151,7 @@ public class BookingDetails {
 	public void setBookingStatus(Character bookingStatus) {
 		this.bookingStatus = bookingStatus;
 	}
+	
+	
 
 }
