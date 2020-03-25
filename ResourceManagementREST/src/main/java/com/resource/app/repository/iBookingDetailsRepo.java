@@ -8,10 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 
 import com.resource.app.model.BookingDetails;
+import com.resource.app.model.ResourceDetails;
 
 public interface iBookingDetailsRepo extends JpaRepositoryImplementation<BookingDetails, Long> {
 	
-	@Query("from BookingDetails where bookingStatus='Y' order by bookingId desc")
+	@Query("from BookingDetails where pending='Y' order by bookingId desc")
 	List<BookingDetails> listAllBooking();
 
 	
