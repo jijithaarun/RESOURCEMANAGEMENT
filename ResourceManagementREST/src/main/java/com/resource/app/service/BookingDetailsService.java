@@ -11,40 +11,42 @@ import org.springframework.stereotype.Service;
 import com.resource.app.model.BookingDetails;
 import com.resource.app.repository.iBookingDetailsRepo;
 
-
 @Service
-public class BookingDetailsService implements iBookingDetailsService{
+public class BookingDetailsService implements iBookingDetailsService {
 
 	@Autowired
 	private iBookingDetailsRepo bookingRepo;
-	
+
 	@Transactional
 	@Override
 	public BookingDetails addBooking(BookingDetails bookingDetails) {
-		
+
 		return bookingRepo.save(bookingDetails);
 	}
 
 	@Override
 	public List<BookingDetails> listAllBooking() {
-		
+
 		return bookingRepo.listAllBooking();
 	}
 
 	@Override
 	public BookingDetails findBookingById(Long bookingId) {
-		Optional<BookingDetails> findBookingId=bookingRepo.findById(bookingId);
-		BookingDetails bookingDetails=findBookingId.isPresent()? findBookingId.get():null;
+		Optional<BookingDetails> findBookingId = bookingRepo.findById(bookingId);
+		BookingDetails bookingDetails = findBookingId.isPresent() ? findBookingId.get() : null;
 		return bookingDetails;
 	}
 
 	@Transactional
 	@Override
 	public void updateBookingStatus(Character BookedStatus, Long bookingId) {
-	bookingRepo.updateBookedStatus(BookedStatus, bookingId);	
+		bookingRepo.updateBookedStatus(BookedStatus, bookingId);
 	}
-	
-	
 
+	@Transactional
+	@Override
+	public BookingDetails updateBooking(BookingDetails bookingDetails) {
+		return bookingRepo.save(bookingDetails);
+	}
 
 }

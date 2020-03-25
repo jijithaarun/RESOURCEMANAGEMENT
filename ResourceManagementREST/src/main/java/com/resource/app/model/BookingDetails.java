@@ -19,7 +19,7 @@ public class BookingDetails {
 
 	@Id // setting primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long bookingid;
+	private Long bookingId;
 
 	// setting relations
 	@ManyToOne
@@ -58,11 +58,11 @@ public class BookingDetails {
 	}
 
 	public Long getBookingid() {
-		return bookingid;
+		return bookingId;
 	}
 
-	public void setBookingid(Long bookingid) {
-		this.bookingid = bookingid;
+	public void setBookingid(Long bookingId) {
+		this.bookingId = bookingId;
 	}
 
 	public ResourceDetails getResourceDetails() {

@@ -58,4 +58,9 @@ public class BookingDetailsController {
 		bookingService.updateBookingStatus(bookingStatus, bookingId);
 	}
 
+	// update booking
+	@PutMapping("booking")
+	public ResponseEntity<BookingDetails> updateBooking(@RequestBody BookingDetails booking) {
+		return new ResponseEntity<BookingDetails>(bookingService.updateBooking(booking), HttpStatus.OK);
+	}
 }

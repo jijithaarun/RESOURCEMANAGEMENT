@@ -14,5 +14,7 @@ public interface iBookingDetailsService {
 	
 	public void updateBookingStatus(Character BookedStatus, Long bookingId);
 	
+	public BookingDetails updateBooking(BookingDetails bookingDetails);
+	
 
 }
