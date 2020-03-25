@@ -51,7 +51,7 @@ public class BookingDetails {
 
 	private Character bookingStatus;
 	
-	private Character pending;
+	private Character pending='Y';
 
 	public BookingDetails() {
 		super();
