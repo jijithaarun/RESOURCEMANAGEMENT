@@ -1,5 +1,6 @@
 package com.resource.app.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,5 +49,23 @@ public class BookingDetailsService implements iBookingDetailsService {
 	public BookingDetails updateBooking(BookingDetails bookingDetails) {
 		return bookingRepo.save(bookingDetails);
 	}
+
+
+
+	@Override
+	public void viewAcceptedReport(BookingDetails bookingDetails) {
+		
+	}
+
+	@Override
+	public void viewRejectedReport(BookingDetails bookingDetails) {
+	
+	}
+
+	@Override
+	public List<BookingDetails> viewReport(Long resourceId, LocalDate startDate, LocalDate curDate) {
+		return bookingRepo.viewReport(resourceId, startDate, curDate);
+	}
+
 
 }

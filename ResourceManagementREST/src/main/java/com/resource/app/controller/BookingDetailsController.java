@@ -1,5 +1,6 @@
 package com.resource.app.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,4 +64,28 @@ public class BookingDetailsController {
 	public ResponseEntity<BookingDetails> updateBooking(@RequestBody BookingDetails booking) {
 		return new ResponseEntity<BookingDetails>(bookingService.updateBooking(booking), HttpStatus.OK);
 	}
+
+	@GetMapping("booking-report/{resourceId}&{startDate}&{curDate}")
+	public ResponseEntity<Integer> findResourceEnquiry(@PathVariable("resourceId") Long resourceId,
+			@PathVariable("startDate") String startDate, @PathVariable("curDate") String curDate) {
+
+		System.out.print("search the booking details by id");
+
+		// default, ISO_LOCAL_DATE
+		LocalDate stDate = LocalDate.parse(startDate);
+		LocalDate currentDate = LocalDate.parse(curDate);
+
+		System.out.println(stDate);
+		ResponseEntity<Integer> response = null;
+
+		List<BookingDetails> booking = bookingService.viewReport(resourceId, stDate, currentDate);
+		if (booking == null) {
+			response = new ResponseEntity<Integer>(HttpStatus.NOT_FOUND);
+		} else {
+			response = new ResponseEntity<Integer>(booking.size(), HttpStatus.OK);
+		}
+
+		return response;
+	}
+
 }

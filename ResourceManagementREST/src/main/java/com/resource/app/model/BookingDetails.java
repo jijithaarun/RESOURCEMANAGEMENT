@@ -151,6 +151,8 @@ public class BookingDetails {
 	public void setBookingStatus(Character bookingStatus) {
 		this.bookingStatus = bookingStatus;
 	}
+
+	
 	
 	
 
