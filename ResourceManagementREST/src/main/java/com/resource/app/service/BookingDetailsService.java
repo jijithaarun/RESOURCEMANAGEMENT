@@ -50,22 +50,20 @@ public class BookingDetailsService implements iBookingDetailsService {
 		return bookingRepo.save(bookingDetails);
 	}
 
-
-
 	@Override
-	public void viewAcceptedReport(BookingDetails bookingDetails) {
-		
+	public List<BookingDetails> viewReport(Long resourceId, LocalDate startDate) {
+		return bookingRepo.viewReport(resourceId, startDate);
 	}
 
 	@Override
-	public void viewRejectedReport(BookingDetails bookingDetails) {
-	
+	public List<BookingDetails> viewAcceptedReport(Long resourceId, LocalDate startDate) {
+		return bookingRepo.viewAcceptedReport(resourceId, startDate);
 	}
 
 	@Override
-	public List<BookingDetails> viewReport(Long resourceId, LocalDate startDate, LocalDate curDate) {
-		return bookingRepo.viewReport(resourceId, startDate, curDate);
-	}
+	public List<BookingDetails> viewRejectedReport(Long resourceId, LocalDate startDate) {
 
+		return bookingRepo.viewRejectedReport(resourceId, startDate);
+	}
 
 }

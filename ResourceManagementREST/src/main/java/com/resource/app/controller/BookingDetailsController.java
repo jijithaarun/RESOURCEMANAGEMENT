@@ -65,20 +65,61 @@ public class BookingDetailsController {
 		return new ResponseEntity<BookingDetails>(bookingService.updateBooking(booking), HttpStatus.OK);
 	}
 
-	@GetMapping("booking-report/{resourceId}&{startDate}&{curDate}")
+	@GetMapping("booking-report/{resourceId}&{startDate}")
 	public ResponseEntity<Integer> findResourceEnquiry(@PathVariable("resourceId") Long resourceId,
-			@PathVariable("startDate") String startDate, @PathVariable("curDate") String curDate) {
+			@PathVariable("startDate") String startDate) {
 
 		System.out.print("search the booking details by id");
 
 		// default, ISO_LOCAL_DATE
 		LocalDate stDate = LocalDate.parse(startDate);
-		LocalDate currentDate = LocalDate.parse(curDate);
 
 		System.out.println(stDate);
 		ResponseEntity<Integer> response = null;
 
-		List<BookingDetails> booking = bookingService.viewReport(resourceId, stDate, currentDate);
+		List<BookingDetails> booking = bookingService.viewReport(resourceId, stDate);
+		if (booking == null) {
+			response = new ResponseEntity<Integer>(HttpStatus.NOT_FOUND);
+		} else {
+			response = new ResponseEntity<Integer>(booking.size(), HttpStatus.OK);
+		}
+
+		return response;
+	}
+
+	// getting the total amount of the accepted status
+	@GetMapping("booking-acceptedreport/{resourceId}&{startDate}")
+	public ResponseEntity<Integer> findEnquiryIsBooked(@PathVariable("resourceId") Long resourceId,
+			@PathVariable("startDate") String startDate) {
+
+		// default, ISO_LOCAL_DATE
+		LocalDate stDate = LocalDate.parse(startDate);
+
+		System.out.println(stDate);
+		ResponseEntity<Integer> response = null;
+
+		List<BookingDetails> booking = bookingService.viewAcceptedReport(resourceId, stDate);
+		if (booking == null) {
+			response = new ResponseEntity<Integer>(HttpStatus.NOT_FOUND);
+		} else {
+			response = new ResponseEntity<Integer>(booking.size(), HttpStatus.OK);
+		}
+
+		return response;
+	}
+
+	// getting the total amount of the rejected status
+	@GetMapping("booking-rejectedreport/{resourceId}&{startDate}")
+	public ResponseEntity<Integer> findEnquiryIsRejected(@PathVariable("resourceId") Long resourceId,
+			@PathVariable("startDate") String startDate) {
+
+		// default, ISO_LOCAL_DATE
+		LocalDate stDate = LocalDate.parse(startDate);
+
+		System.out.println(stDate);
+		ResponseEntity<Integer> response = null;
+
+		List<BookingDetails> booking = bookingService.viewRejectedReport(resourceId, stDate);
 		if (booking == null) {
 			response = new ResponseEntity<Integer>(HttpStatus.NOT_FOUND);
 		} else {

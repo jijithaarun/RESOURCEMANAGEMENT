@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 
 import com.resource.app.model.BookingDetails;
-import com.resource.app.model.ResourceDetails;
 
 public interface iBookingDetailsRepo extends JpaRepositoryImplementation<BookingDetails, Long> {
 	
@@ -21,12 +20,12 @@ public interface iBookingDetailsRepo extends JpaRepositoryImplementation<Booking
 	@Query("update BookingDetails set bookingStatus=?1 where bookingId=?2")
 	void updateBookedStatus(Character bookingStatus,Long bookingId);
 	
-	@Query("from BookingDetails where resourceDetails.resourceId=?1 and startDate BETWEEN ?2 and ?3")
-	List<BookingDetails> viewReport(Long resourceId,LocalDate startDate,LocalDate curDate);
+	@Query("from BookingDetails where resourceDetails.resourceId=?1 and startDate>=?2 and startDate<=CURDATE()")
+	List<BookingDetails> viewReport(Long resourceId,LocalDate startDate);
 	
-	@Query("from BookingDetails where resourceId=?1 and startDate BETWEEN ?2 and ?3 and  bookingStatus='Y'")
-	void viewAcceptedReport(Integer resourceId);
+	@Query("from BookingDetails where resourceDetails.resourceId=?1 and startDate>=?2 and startDate<=CURDATE() and  bookingStatus='Y'")
+	List<BookingDetails> viewAcceptedReport(Long resourceId,LocalDate startDate);
 	
-	@Query("from BookingDetails where resourceId=?1 and startDate BETWEEN ?2 and ?3 and bookingStatus='N'")
-	void viewRejectedReport(Integer resourceId);
+	@Query("from BookingDetails where resourceDetails.resourceId=?1 and startDate>=?2 and startDate <=CURDATE() and bookingStatus='N'")
+	List<BookingDetails> viewRejectedReport(Long resourceId,LocalDate startDate);
 }
