@@ -51,19 +51,19 @@ public class BookingDetailsService implements iBookingDetailsService {
 	}
 
 	@Override
-	public List<BookingDetails> viewReport(Long resourceId, LocalDate startDate) {
-		return bookingRepo.viewReport(resourceId, startDate);
+	public List<BookingDetails> viewReport(Long resourceId, LocalDate startDate, LocalDate endDate) {
+		return bookingRepo.viewReport(resourceId, startDate, endDate);
 	}
 
 	@Override
-	public List<BookingDetails> viewAcceptedReport(Long resourceId, LocalDate startDate) {
-		return bookingRepo.viewAcceptedReport(resourceId, startDate);
+	public List<BookingDetails> viewAcceptedReport(Long resourceId, LocalDate startDate, LocalDate endDate) {
+		return bookingRepo.viewAcceptedReport(resourceId, startDate, endDate);
 	}
 
 	@Override
-	public List<BookingDetails> viewRejectedReport(Long resourceId, LocalDate startDate) {
+	public List<BookingDetails> viewRejectedReport(Long resourceId, LocalDate startDate, LocalDate endDate) {
 
-		return bookingRepo.viewRejectedReport(resourceId, startDate);
+		return bookingRepo.viewRejectedReport(resourceId, startDate, endDate);
 	}
 
 }

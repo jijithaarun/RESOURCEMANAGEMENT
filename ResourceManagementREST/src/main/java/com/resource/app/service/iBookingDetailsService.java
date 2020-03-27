@@ -17,11 +17,11 @@ public interface iBookingDetailsService {
 	
 	public BookingDetails updateBooking(BookingDetails bookingDetails);
 	
-	public List<BookingDetails> viewReport(Long resourceId,LocalDate startDate);
+	public List<BookingDetails> viewReport(Long resourceId,LocalDate startDate,LocalDate endDate);
 	
-	public List<BookingDetails> viewAcceptedReport(Long resourceId,LocalDate startDate);
+	public List<BookingDetails> viewAcceptedReport(Long resourceId,LocalDate startDate,LocalDate endDate);
 	
-	public List<BookingDetails> viewRejectedReport(Long resourceId,LocalDate startDate);
+	public List<BookingDetails> viewRejectedReport(Long resourceId,LocalDate startDate,LocalDate endDate);
 	
 
 }
