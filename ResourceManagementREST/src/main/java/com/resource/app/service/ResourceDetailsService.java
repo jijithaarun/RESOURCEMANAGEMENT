@@ -55,7 +55,7 @@ public class ResourceDetailsService implements iResourceDetailsService {
 	@Override
 	public List<ResourceDetails> listAllResource() {
 
-		return resourceDetailsRepo.findAll();
+		return resourceDetailsRepo.listAllResource();
 	}
 
 	@Override
@@ -70,6 +70,12 @@ public class ResourceDetailsService implements iResourceDetailsService {
 		List<ResourceDetails> viewResourceName = resourceDetailsRepo.findByResource(resourceName);
 		return viewResourceName;
 
+	}
+
+	@Override
+	public List<ResourceDetails> listResourceDetails() {
+	
+		return resourceDetailsRepo.listResourcedetails();
 	}
 
 }

@@ -88,5 +88,11 @@ public class ResourceDetailsController {
 	public ResponseEntity<List<ResourceDetails>> listAllResources() {
 		return new ResponseEntity<List<ResourceDetails>>(resourceDetailsService.listAllResource(), HttpStatus.OK);
 	}
+	
+	// get all the resource details when is active =y
+		@GetMapping("resourcedetails-isactive")
+		public ResponseEntity<List<ResourceDetails>> listResourcesDetails() {
+			return new ResponseEntity<List<ResourceDetails>>(resourceDetailsService.listResourceDetails(), HttpStatus.OK);
+		}
 
 }

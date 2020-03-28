@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 
 //create table name
@@ -19,7 +18,7 @@ public class BookingDetails {
 
 	@Id // setting primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long bookingid;
+	private Long bookingId;
 
 	// setting relations
 	@ManyToOne
@@ -49,21 +48,36 @@ public class BookingDetails {
 	@Column(nullable = false) // create column with not null
 	private String purpose;
 
-	@ColumnDefault(value = " 'Y' ")
 	private Character bookingStatus;
+	
+	private Character pending='Y';
 
 	public BookingDetails() {
 		super();
 
 	}
-
-	public Long getBookingid() {
-		return bookingid;
+	public Long getBookingId() {
+		return bookingId;
 	}
 
-	public void setBookingid(Long bookingid) {
-		this.bookingid = bookingid;
+
+	public void setBookingId(Long bookingId) {
+		this.bookingId = bookingId;
 	}
+
+
+
+	public Character getPending() {
+		return pending;
+	}
+
+
+
+	public void setPending(Character pending) {
+		this.pending = pending;
+	}
+
+
 
 	public ResourceDetails getResourceDetails() {
 		return resourceDetails;
@@ -136,5 +150,9 @@ public class BookingDetails {
 	public void setBookingStatus(Character bookingStatus) {
 		this.bookingStatus = bookingStatus;
 	}
+
+	
+	
+	
 
 }

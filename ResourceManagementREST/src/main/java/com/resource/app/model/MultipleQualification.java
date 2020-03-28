@@ -24,6 +24,7 @@ public class MultipleQualification {
 	
 	private Integer mark;
 	private Integer yearOfPassing;
+	
 	public Integer getmQualificationId() {
 		return mQualificationId;
 	}

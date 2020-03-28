@@ -1,5 +1,6 @@
 package com.resource.app.model;
 
+
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -10,16 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 @Entity
 public class Enquiry {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer enquiryId;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate enquiryDate;
+	private LocalDate enquiryDate=LocalDate.now();
 	
 	@Column(nullable = false)
 	private String name;
@@ -35,6 +33,7 @@ public class Enquiry {
 	private Course course;
 	
 	private String leadSource;
+	
 	@ManyToOne
 	@JoinColumn(name="qualificationId")
 	private Qualification qualification;
