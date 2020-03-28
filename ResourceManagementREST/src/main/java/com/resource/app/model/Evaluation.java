@@ -2,7 +2,7 @@ package com.resource.app.model;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+//@Entity
 public class Evaluation {
 	
 	@ManyToOne
