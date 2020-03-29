@@ -24,7 +24,7 @@ public class BatchController {
 	//create object
 	iBatchService batchService;
 
-	// list batch
+	// list batchdetails
 	@GetMapping("batch")
 	public ResponseEntity<List<Batch>> listBatch() {
 
@@ -33,7 +33,7 @@ public class BatchController {
 
 	}
 
-	// add batch
+	// add to batch
 	@PostMapping("batch") 
 	public ResponseEntity<Batch> addBatch(@RequestBody Batch batch) {
 
