@@ -28,12 +28,13 @@ public class BatchController {
 	@GetMapping("batch")
 	public ResponseEntity<List<Batch>> listBatch() {
 
+		
 		return new ResponseEntity<List<Batch>>(batchService.listBatch(), HttpStatus.OK);
 
 	}
 
 	// add batch
-	@PostMapping("batch") // insert the details
+	@PostMapping("batch") 
 	public ResponseEntity<Batch> addBatch(@RequestBody Batch batch) {
 
 		return new ResponseEntity<Batch>(batchService.addBatch(batch), HttpStatus.OK);
