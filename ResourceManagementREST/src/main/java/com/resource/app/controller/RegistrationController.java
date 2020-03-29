@@ -27,7 +27,7 @@ public class RegistrationController {
 	// implement registration service
 	iRegistrationService registrationService;
 
-	// list registration
+	// list registration  details
 	@GetMapping("registration")
 	public ResponseEntity<List<Registration>> listRegistration() {
 
@@ -35,7 +35,7 @@ public class RegistrationController {
 
 	}
 
-//add to registration
+//add to registration table
 	@PostMapping("registration") // get the registration
 	public ResponseEntity<Registration> addRegistration(@RequestBody Registration registration) {
 
@@ -46,10 +46,9 @@ public class RegistrationController {
 	// find registration by name
 	@GetMapping("registration/{courseName}")
 	public List<Registration> findRegisterByName(@PathVariable("courseName") String courseName) {
-		System.out.println("searching ");
+
 		List<Registration> viewRegisterDetails = registrationService.findRegistrationByName(courseName);
 		return viewRegisterDetails;
 	}
-	
 
 }
