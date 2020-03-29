@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 public class ResourceDetails {
@@ -24,10 +25,10 @@ public class ResourceDetails {
 	@JoinColumn(name = "resourceTypeId")
 	private Resource resource;
 
-	@Column(nullable = false,length=8) // create column with not null
+	@Column(nullable = false, length = 8) // create column with not null
 	private Integer resourceCapacity;
 
-	@Column(nullable = false,length=8) // create column with not null
+	@Column(nullable = false, length = 8) // create column with not null
 	private Integer noOfSystems;
 
 	@Column(nullable = false) // create column with not null
@@ -35,17 +36,18 @@ public class ResourceDetails {
 
 	@Column(nullable = false) // create column with not null
 	private Character whiteBoard;
-	private Blob photo;
+	private byte[] photo;
 	private String picturePath;
 
 	@Column(nullable = false) // create column with not null
 	private Float resourceRate;
 
 	private String typeOfUse;
+	@Value("${N}")
 	private Character isAccepted;
+	@Value("${N}")
 	private Character isBooked;
-
-	@ColumnDefault(value = " 'Y' ")
+	@Value("${Y}")
 	private Character isActive;
 
 	public ResourceDetails() {
@@ -105,11 +107,11 @@ public class ResourceDetails {
 		this.whiteBoard = whiteBoard;
 	}
 
-	public Blob getPhoto() {
+	public byte[] getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(Blob photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
 

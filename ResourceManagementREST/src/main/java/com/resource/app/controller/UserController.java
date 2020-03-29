@@ -46,7 +46,7 @@ public class UserController {
 	}
 
 	// list all users
-	@GetMapping("user/{username}&{password}")
+	@GetMapping("user-login/{username}&{password}")
 	public ResponseEntity<User> listUser(@PathVariable("username") String username,
 			@PathVariable("password") String password) {
 

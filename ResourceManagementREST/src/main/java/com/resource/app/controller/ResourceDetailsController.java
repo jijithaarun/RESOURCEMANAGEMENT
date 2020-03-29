@@ -1,5 +1,6 @@
 package com.resource.app.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.resource.app.model.ResourceDetails;
+import com.resource.app.model.Response;
 import com.resource.app.service.iResourceDetailsService;
 
 @CrossOrigin
@@ -26,11 +33,26 @@ public class ResourceDetailsController {
 	@Autowired
 	private iResourceDetailsService resourceDetailsService;
 
-	// add resourceDetails
+	@PostMapping("resourcedetails")
+	public ResponseEntity<Response> addResource(@RequestParam("file") MultipartFile file,@RequestParam("resource") String resource) throws JsonMappingException, JsonProcessingException,IOException 
+	{
+		ResourceDetails resourceDetails=new ObjectMapper().readValue(resource, ResourceDetails.class);
+		resourceDetails.setPhoto(file.getBytes());
+		resourceDetails.setPicturePath(file.getOriginalFilename());
+		ResourceDetails resourceDtls=resourceDetailsService.addResource(resourceDetails);
+		if(resourceDtls!=null)
+		{
+		return new ResponseEntity<Response>(new Response("resource details saved success"),HttpStatus.OK);
+		}else
+		{
+			return new ResponseEntity<Response> (new Response("resource details saved not success"),HttpStatus.BAD_REQUEST);
+		}
+	}
+	/*// add resourceDetails
 	@PostMapping("resourcedetails")
 	public ResponseEntity<ResourceDetails> addResource(@RequestBody ResourceDetails resource) {
 		return new ResponseEntity<ResourceDetails>(resourceDetailsService.addResource(resource), HttpStatus.OK);
-	}
+	}*/
 
 	// edit resourceDetails
 	@PutMapping("resourcedetails")
