@@ -27,7 +27,7 @@
 			<version>9.0.31</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
+			 <groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
 		<!-- mysql dependency -->
@@ -38,7 +38,7 @@
 		</dependency>
 		<!-- jstl dependency -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
+			<groupId>javaxServlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
