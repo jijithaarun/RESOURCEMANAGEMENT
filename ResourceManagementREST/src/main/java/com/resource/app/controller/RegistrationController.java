@@ -25,6 +25,7 @@ public class RegistrationController {
 	@Autowired
 
 	// implement registration service
+	//create object of service
 	iRegistrationService registrationService;
 
 	// list registration  details

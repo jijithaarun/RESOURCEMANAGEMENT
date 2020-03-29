@@ -20,7 +20,8 @@ import com.resource.app.service.iBatchService;
 public class BatchController {
 	@Autowired
 
-	// implement service
+	// implement service 
+	//create object
 	iBatchService batchService;
 
 	// list batch
