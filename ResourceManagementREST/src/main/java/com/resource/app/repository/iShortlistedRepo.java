@@ -4,10 +4,6 @@ import org.springframework.data.jpa.repository.support.JpaRepositoryImplementati
 
 import com.resource.app.model.Shortlisted;
 
-
-
-public interface iShortlisted extends JpaRepositoryImplementation<Shortlisted, Integer>{
-	
-	
+public interface iShortlistedRepo extends JpaRepositoryImplementation<Shortlisted, Integer> {
 
 }
