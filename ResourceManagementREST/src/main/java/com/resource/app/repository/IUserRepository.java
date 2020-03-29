@@ -20,6 +20,6 @@ public interface IUserRepository extends JpaRepositoryImplementation<User, Integ
 	
 	@Modifying
 	@Query("update User set isActive='N' where id=?1")
-	void save(Integer id);
+	void save(Integer id); 
 
 }
