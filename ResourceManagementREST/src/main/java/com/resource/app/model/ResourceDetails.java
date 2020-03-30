@@ -43,11 +43,11 @@ public class ResourceDetails {
 	private Float resourceRate;
 
 	private String typeOfUse;
-	@Value("${N}")
+
 	private Character isAccepted;
-	@Value("${N}")
+
 	private Character isBooked;
-	@Value("${Y}")
+
 	private Character isActive;
 
 	public ResourceDetails() {

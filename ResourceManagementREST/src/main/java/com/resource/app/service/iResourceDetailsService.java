@@ -2,6 +2,8 @@ package com.resource.app.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.resource.app.model.ResourceDetails;
 
 public interface iResourceDetailsService {
@@ -22,5 +24,7 @@ public interface iResourceDetailsService {
 	public void updateIsAccepted(Character isAccepted, Long resourceId);
 	
 	public List<ResourceDetails> listResourceDetails();
+	
+
 
 }
