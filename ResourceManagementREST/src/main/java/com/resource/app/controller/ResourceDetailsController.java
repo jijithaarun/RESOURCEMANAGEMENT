@@ -85,7 +85,7 @@ public class ResourceDetailsController {
 	}
 
 	// find resource by i d
-	@GetMapping("resourcedetails/{resourceId}")
+	@GetMapping("resourcedetails-id/{resourceId}")
 	public ResponseEntity<ResourceDetails> findResourceById(@PathVariable("resourceId") Long resourceId) {
 		System.out.println("searching resources");
 		ResponseEntity<ResourceDetails> response = null;

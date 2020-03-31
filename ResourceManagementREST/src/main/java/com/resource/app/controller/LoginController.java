@@ -1,6 +1,7 @@
 package com.resource.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -8,6 +9,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +22,7 @@ import com.resource.app.service.LoginService;
 
 @CrossOrigin
 @RestController
+@RequestMapping("/")
 public class LoginController {
 
 	@Autowired
@@ -32,25 +35,28 @@ public class LoginController {
 	private LoginService userDetailsService;
 
 	// authenticate
-	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody User authenticationRequest) throws Exception {
+	@PostMapping("authenticate")
+	public ResponseEntity<JwtResponse> createAuthenticationToken(@RequestBody User authenticationRequest) throws Exception {
 
-		System.out.println("Controller");
 		authenticate(authenticationRequest.getUserName(), authenticationRequest.getPassword());
 
-		System.out.println(authenticationRequest.getPassword());
+		// checking if user exist or not
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUserName());
 
+		// generating token
 		final String token = jwtTokenUtil.generateToken(userDetails);
-		
-		User user= userDetailsService.findByUsername(authenticationRequest.getUserName());
-		
-		String userName=user.getUserName();
-		Integer roleId=user.getRoleDetails().getRoleId();
-		
-		return ResponseEntity.ok(new JwtResponse(token,userName,roleId));
+
+		// getting user details
+		User user = userDetailsService.findByUsername(authenticationRequest.getUserName());
+
+		// taking username and roleId
+		String userName = user.getUserName();
+		Integer roleId = user.getRoleDetails().getRoleId();
+
+		return new ResponseEntity<JwtResponse>(new JwtResponse(token, userName, roleId),HttpStatus.OK);
 	}
 
+	// first time register
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
 		return ResponseEntity.ok(userDetailsService.save(user));
