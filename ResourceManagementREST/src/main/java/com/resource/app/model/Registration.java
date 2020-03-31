@@ -45,7 +45,8 @@ public class Registration {
 	@JoinColumn(name = "courseId")
 	private Course course;
 
-	private Blob photo;
+	private byte[] photo;
+	private String pictureName; 
 
 	private String status;
 
@@ -129,12 +130,20 @@ public class Registration {
 		this.course = course;
 	}
 
-	public Blob getPhoto() {
+	public byte[] getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(Blob photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
+	}
+
+	public String getPictureName() {
+		return pictureName;
+	}
+
+	public void setPictureName(String pictureName) {
+		this.pictureName = pictureName;
 	}
 
 	public String getStatus() {
