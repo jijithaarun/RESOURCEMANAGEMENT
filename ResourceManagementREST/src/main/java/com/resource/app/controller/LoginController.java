@@ -30,13 +30,15 @@ public class LoginController {
 
 	@Autowired
 	private LoginService userDetailsService;
-
+	
+	
+	// authenticate
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody User authenticationRequest) throws Exception {
 
 		System.out.println("Controller");
 		authenticate(authenticationRequest.getUserName(), authenticationRequest.getPassword());
-		
+
 		System.out.println(authenticationRequest.getPassword());
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUserName());
 
