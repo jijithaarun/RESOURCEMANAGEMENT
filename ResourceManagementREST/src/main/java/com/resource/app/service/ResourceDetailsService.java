@@ -2,11 +2,10 @@ package com.resource.app.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.resource.app.model.ResourceDetails;
 import com.resource.app.repository.iResourceDetailsRepo;
@@ -16,6 +15,7 @@ public class ResourceDetailsService implements iResourceDetailsService {
 
 	@Autowired
 	private iResourceDetailsRepo resourceDetailsRepo;
+
 
 	@Transactional
 	@Override
@@ -77,5 +77,8 @@ public class ResourceDetailsService implements iResourceDetailsService {
 	
 		return resourceDetailsRepo.listResourcedetails();
 	}
+	
+
+	 
 
 }

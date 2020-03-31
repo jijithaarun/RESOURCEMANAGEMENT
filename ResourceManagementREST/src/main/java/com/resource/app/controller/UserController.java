@@ -45,8 +45,8 @@ public class UserController {
 		return new ResponseEntity<User>(userService.updateUser(user), HttpStatus.OK);
 	}
 
-	// list all users
-	@GetMapping("user/{username}&{password}")
+	// get users based on username and password
+	@GetMapping("user-login/{username}&{password}")
 	public ResponseEntity<User> listUser(@PathVariable("username") String username,
 			@PathVariable("password") String password) {
 

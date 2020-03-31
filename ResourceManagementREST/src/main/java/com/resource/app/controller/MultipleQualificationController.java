@@ -24,7 +24,7 @@ public class MultipleQualificationController {
 
 	// adding the qualification details
 	@PostMapping("multiple")
-	public ResponseEntity<MultipleQualification> addPayment(MultipleQualification qualification) {
+	public ResponseEntity<MultipleQualification> addMultiQualification(MultipleQualification qualification) {
 		return new ResponseEntity<MultipleQualification>(qualificationService.addQualification(qualification),
 				HttpStatus.OK);
 
@@ -32,7 +32,7 @@ public class MultipleQualificationController {
 
 	// get all the qualification details
 	@GetMapping("multiple")
-	public ResponseEntity<List<MultipleQualification>> listQualification() {
+	public ResponseEntity<List<MultipleQualification>> listMultiQualification() {
 		return new ResponseEntity<List<MultipleQualification>>(qualificationService.listAllQualification(),
 				HttpStatus.OK);
 
