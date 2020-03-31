@@ -23,7 +23,6 @@ public class ShortlistedService implements iShortlistedService {
 	}
 	
 	//list of all users 
-	
 	@Override
 	public List<Shortlisted> listShortlisted() {
 		// TODO Auto-generated method stub
