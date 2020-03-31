@@ -11,29 +11,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.resource.app.model.Payment;
-import com.resource.app.service.iPaymentService;
+
+import com.resource.app.model.Shortlisted;
+import com.resource.app.service.iShortlistedService;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/")
-public class PaymentController {
+public class ShortlistedController {
 
 	@Autowired
-	private iPaymentService paymentService;
+	private iShortlistedService shortlistedService;
 
-	// adding the payment details
-	@PostMapping("payment")
-	public ResponseEntity<Payment> addPayment(@RequestBody Payment payment) {
-		return new ResponseEntity<Payment>(paymentService.addPayment(payment), HttpStatus.OK);
-
+	// add shortlisted
+	@PostMapping("shortlisted")
+	public ResponseEntity<Shortlisted> addShortlisted(@RequestBody Shortlisted shortlisted) {
+		return new ResponseEntity<Shortlisted>(shortlistedService.addShortlisted(shortlisted), HttpStatus.OK);
 	}
 
-	// get all the payments
-	@GetMapping("payment")
-	public ResponseEntity<List<Payment>> listPayments() {
-		return new ResponseEntity<List<Payment>>(paymentService.listPayment(), HttpStatus.OK);
-
+	// list all shortlisted
+	@GetMapping("shortlisted")
+	public ResponseEntity<List<Shortlisted>> listAllShortListed() {
+		return new ResponseEntity<List<Shortlisted>>(shortlistedService.listShortlisted(), HttpStatus.OK);
 	}
 
 }

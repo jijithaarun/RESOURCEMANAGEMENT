@@ -77,7 +77,7 @@ public class ResourceDetailsController {
 
 	}
 
-	// update isaccepted details
+	// update is accepted details
 	@PutMapping("resourcedetails-accepted/{resourceId}&{isAccepted}")
 	public void updateIsAccepted(@PathVariable("resourceId") Long resourceId,
 			@PathVariable("isAccepted") Character isAccepted) {

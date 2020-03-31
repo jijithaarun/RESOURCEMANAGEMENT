@@ -11,29 +11,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.resource.app.model.Payment;
-import com.resource.app.service.iPaymentService;
+
+import com.resource.app.model.Evaluation;
+import com.resource.app.service.IEvaluationService;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/")
-public class PaymentController {
-
+public class EvaluvationController {
 	@Autowired
-	private iPaymentService paymentService;
+	private IEvaluationService evaluvationService;
 
-	// adding the payment details
-	@PostMapping("payment")
-	public ResponseEntity<Payment> addPayment(@RequestBody Payment payment) {
-		return new ResponseEntity<Payment>(paymentService.addPayment(payment), HttpStatus.OK);
-
+	// add evaluation
+	@PostMapping("evaluation")
+	private ResponseEntity<Evaluation> addEvaluation(@RequestBody Evaluation evaluation) {
+		return new ResponseEntity<Evaluation>(evaluvationService.addEvaluation(evaluation), HttpStatus.OK);
 	}
 
-	// get all the payments
-	@GetMapping("payment")
-	public ResponseEntity<List<Payment>> listPayments() {
-		return new ResponseEntity<List<Payment>>(paymentService.listPayment(), HttpStatus.OK);
-
+	// get all evaluation
+	@GetMapping("evaluation")
+	private ResponseEntity<List<Evaluation>> listAllEvaluation() {
+		return new ResponseEntity<List<Evaluation>>(evaluvationService.listAllEvaluvation(), HttpStatus.OK);
 	}
 
 }
