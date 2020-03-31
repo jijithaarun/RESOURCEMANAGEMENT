@@ -12,7 +12,7 @@ import com.resource.app.repository.IEvaluationRepo;
 
 @Service
 public class EvaluationService implements IEvaluationService {
-	
+
 	@Autowired
 	private IEvaluationRepo evaluationRepo;
 
@@ -28,6 +28,5 @@ public class EvaluationService implements IEvaluationService {
 		// TODO Auto-generated method stub
 		return evaluationRepo.findAll();
 	}
-
 
 }

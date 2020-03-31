@@ -20,22 +20,18 @@ import com.resource.app.service.IEvaluationService;
 @RequestMapping("/")
 public class EvaluvationController {
 	@Autowired
-	private IEvaluationService evaluvationService; 
-	
-	//add evaluation
-	@PostMapping("evaluation")
-	private ResponseEntity<Evaluation>addEvaluation(@RequestBody Evaluation evaluation){
-		return new ResponseEntity<Evaluation>(evaluvationService.addEvaluation(evaluation),HttpStatus.OK);
-	}
-	
-	//get all evaluation
-	@GetMapping("evaluation")
-	private ResponseEntity<List<Evaluation>> listAllEvaluation(){
-		return new ResponseEntity<List<Evaluation>>(evaluvationService.listAllEvaluvation(),HttpStatus.OK);
-	}
-	
-	
+	private IEvaluationService evaluvationService;
 
-	
-	
+	// add evaluation
+	@PostMapping("evaluation")
+	private ResponseEntity<Evaluation> addEvaluation(@RequestBody Evaluation evaluation) {
+		return new ResponseEntity<Evaluation>(evaluvationService.addEvaluation(evaluation), HttpStatus.OK);
+	}
+
+	// get all evaluation
+	@GetMapping("evaluation")
+	private ResponseEntity<List<Evaluation>> listAllEvaluation() {
+		return new ResponseEntity<List<Evaluation>>(evaluvationService.listAllEvaluvation(), HttpStatus.OK);
+	}
+
 }

@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.support.JpaRepositoryImplementati
 
 import com.resource.app.model.Evaluation;
 
-public interface IEvaluationRepo extends JpaRepositoryImplementation<Evaluation, Integer>  {
+public interface IEvaluationRepo extends JpaRepositoryImplementation<Evaluation, Integer> {
 
 }

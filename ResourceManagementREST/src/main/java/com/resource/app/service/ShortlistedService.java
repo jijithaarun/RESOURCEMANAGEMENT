@@ -12,7 +12,7 @@ import com.resource.app.repository.iShortlistedRepo;
 
 @Service
 public class ShortlistedService implements iShortlistedService {
-	
+
 	@Autowired
 	private iShortlistedRepo shortlistedRepo;
 
@@ -27,8 +27,5 @@ public class ShortlistedService implements iShortlistedService {
 		// TODO Auto-generated method stub
 		return shortlistedRepo.findAll();
 	}
-	
-	
-	
 
 }
