@@ -21,6 +21,7 @@ public class ShortlistedService implements iShortlistedService {
 		// TODO Auto-generated method stub
 		return shortlistedRepo.save(shortlisted);
 	}
+	
 
 	@Override
 	public List<Shortlisted> listShortlisted() {
