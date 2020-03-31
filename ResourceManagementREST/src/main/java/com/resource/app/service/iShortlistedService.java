@@ -9,5 +9,7 @@ public interface iShortlistedService {
 	public Shortlisted addShortlisted (Shortlisted shortlisted);
 	
 	public List <Shortlisted> listShortlisted();
+	
+	
 
 }
