@@ -30,8 +30,7 @@ public class LoginController {
 
 	@Autowired
 	private LoginService userDetailsService;
-	
-	
+
 	// authenticate
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody User authenticationRequest) throws Exception {
@@ -43,8 +42,13 @@ public class LoginController {
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUserName());
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
-
-		return ResponseEntity.ok(new JwtResponse(token));
+		
+		User user= userDetailsService.findByUsername(authenticationRequest.getUserName());
+		
+		String userName=user.getUserName();
+		Integer roleId=user.getRoleDetails().getRoleId();
+		
+		return ResponseEntity.ok(new JwtResponse(token,userName,roleId));
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)

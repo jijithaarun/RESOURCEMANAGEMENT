@@ -33,10 +33,16 @@ public class LoginService implements UserDetailsService{
 				new ArrayList<>());
 	}
 	
+	// save
 	public User save(User user) {
 		User newUser = new User();
 		newUser.setUserName(user.getUserName());
 		newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
 		return userRepo.save(newUser);
+	}
+	
+	// search by username
+	public User findByUsername(String userName) {
+		return userRepo.findByUserName(userName);
 	}
 }
