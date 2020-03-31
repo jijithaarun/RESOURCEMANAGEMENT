@@ -22,7 +22,7 @@ public class ShortlistedService implements iShortlistedService {
 		return shortlistedRepo.save(shortlisted);
 	}
 	
-	//list of all users
+	//list of all users 
 	@Override
 	public List<Shortlisted> listShortlisted() {
 		// TODO Auto-generated method stub
