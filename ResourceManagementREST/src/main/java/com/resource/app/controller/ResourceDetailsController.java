@@ -31,7 +31,7 @@ import com.resource.app.service.iResourceDetailsService;
 public class ResourceDetailsController {
 
 	@Autowired
-	private iResourceDetailsService resourceDetailsService;
+	private iResourceDetailsService resourceDetailsService; 
 
 	@PostMapping("resourcedetails")
 	public ResponseEntity<Response> addResource(@RequestParam("file") MultipartFile file,@RequestParam("resource") String resource) throws JsonMappingException, JsonProcessingException,IOException 
@@ -39,7 +39,7 @@ public class ResourceDetailsController {
 		ResourceDetails resourceDet=new ObjectMapper().readValue(resource, ResourceDetails.class);
 		//resourceDet.setPhoto(file.getBytes());
 		resourceDet.setPicturePath("D:/resourcemanagement/src/assets/image/"+file.getOriginalFilename());
-		ResourceDetails resourceDtls=resourceDetailsService.addResource(resourceDet);
+		ResourceDetails resourceDtls=resourceDetailsService.addResource(resourceDet); 
 		
 		if(resourceDtls!=null)
 		{
@@ -85,7 +85,7 @@ public class ResourceDetailsController {
 	}
 
 	// find resource by i d
-	@GetMapping("resourcedetails/{resourceId}")
+	@GetMapping("resourcedetails-id/{resourceId}")
 	public ResponseEntity<ResourceDetails> findResourceById(@PathVariable("resourceId") Long resourceId) {
 		System.out.println("searching resources");
 		ResponseEntity<ResourceDetails> response = null;

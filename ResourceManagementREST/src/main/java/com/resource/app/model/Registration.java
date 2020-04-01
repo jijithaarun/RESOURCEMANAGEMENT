@@ -36,6 +36,16 @@ public class Registration {
 
 	@Column(nullable = false)
 	private String nationality;
+	
+	@Column(nullable=false)
+	private String gender;
+	
+	@Column(nullable=false)
+	private String phone;
+	
+	private LocalDate datoOfBirth;
+	
+	private String email;
 
 	@ManyToOne
 	@JoinColumn(name = "paymentId")
@@ -44,7 +54,8 @@ public class Registration {
 	@ManyToOne
 	@JoinColumn(name = "courseId")
 	private Course course;
-
+	
+	@Column(length=1000)
 	private byte[] photo;
 	private String pictureName; 
 
@@ -56,6 +67,30 @@ public class Registration {
 
 	public void setRegistrationId(Integer registrationId) {
 		this.registrationId = registrationId;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public LocalDate getDatoOfBirth() {
+		return datoOfBirth;
+	}
+
+	public void setDatoOfBirth(LocalDate datoOfBirth) {
+		this.datoOfBirth = datoOfBirth;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public LocalDate getRegistrationDate() {
@@ -128,6 +163,14 @@ public class Registration {
 
 	public void setCourse(Course course) {
 		this.course = course;
+	}
+	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public byte[] getPhoto() {

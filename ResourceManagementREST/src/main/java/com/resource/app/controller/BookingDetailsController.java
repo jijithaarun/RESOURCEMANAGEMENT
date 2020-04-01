@@ -27,7 +27,7 @@ public class BookingDetailsController {
 	private iBookingDetailsService bookingService;
 
 	// add booking
-	@PostMapping("booking")
+	@PostMapping("book")
 	public ResponseEntity<BookingDetails> addBooking(@RequestBody BookingDetails booking) {
 		return new ResponseEntity<BookingDetails>(bookingService.addBooking(booking), HttpStatus.OK);
 	}

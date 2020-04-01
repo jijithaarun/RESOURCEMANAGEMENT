@@ -26,10 +26,7 @@ public class BatchController {
 
 	// list batchdetails
 	@GetMapping("batch")
-	
-	public ResponseEntity<List<Batch>> listBatch() {
-
-		
+	public ResponseEntity<List<Batch>> listBatch() {	
 		return new ResponseEntity<List<Batch>>(batchService.listBatch(), HttpStatus.OK);
 
 	}
