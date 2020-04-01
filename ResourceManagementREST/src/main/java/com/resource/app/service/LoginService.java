@@ -35,10 +35,9 @@ public class LoginService implements UserDetailsService{
 	
 	// save
 	public User save(User user) {
-		User newUser = new User();
-		newUser.setUserName(user.getUserName());
-		newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-		return userRepo.save(newUser);
+	
+		user.setPassword(bcryptEncoder.encode(user.getPassword()));
+		return userRepo.save(user);
 	}
 	
 	// search by username
