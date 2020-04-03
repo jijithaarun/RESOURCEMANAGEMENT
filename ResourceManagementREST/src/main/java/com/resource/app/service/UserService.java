@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.resource.app.model.User;
@@ -19,11 +20,14 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private IUserRepository userRepo;
+	
+	@Autowired
+	private PasswordEncoder bcryptEncoder;
 
 	@Transactional
 	@Override
 	public User addUser(User user) {
-
+		user.setPassword(bcryptEncoder.encode(user.getPassword()));
 		return userRepo.save(user);
 	}
 

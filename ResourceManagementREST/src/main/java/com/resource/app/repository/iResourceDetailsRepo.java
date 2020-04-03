@@ -1,6 +1,7 @@
 package com.resource.app.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +18,9 @@ public interface iResourceDetailsRepo extends JpaRepositoryImplementation<Resour
 
 	@Query("from ResourceDetails WHERE resource.resourceType=?1")
 	List<ResourceDetails> findByResource(String resourceName);
+	
+	@Query("from ResourceDetails where resourceId=?1")
+	Optional<ResourceDetails> findImage(String imageName);
 
 	@Modifying
 	@Query("update ResourceDetails set isActive=?1 where resourceId=?2")

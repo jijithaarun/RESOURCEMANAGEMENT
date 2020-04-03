@@ -1,6 +1,7 @@
 package com.resource.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,6 +25,8 @@ public interface iResourceDetailsService {
 	public void updateIsAccepted(Character isAccepted, Long resourceId);
 	
 	public List<ResourceDetails> listResourceDetails();
+	
+	public Optional<ResourceDetails> findImage(String imageName);
 	
 
 

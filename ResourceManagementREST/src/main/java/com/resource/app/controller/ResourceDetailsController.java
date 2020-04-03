@@ -1,7 +1,12 @@
 package com.resource.app.controller;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+import java.util.zip.DataFormatException;
+import java.util.zip.Deflater;
+import java.util.zip.Inflater;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,29 +36,33 @@ import com.resource.app.service.iResourceDetailsService;
 public class ResourceDetailsController {
 
 	@Autowired
-	private iResourceDetailsService resourceDetailsService; 
+	private iResourceDetailsService resourceDetailsService;
 
 	@PostMapping("resourcedetails")
-	public ResponseEntity<Response> addResource(@RequestParam("file") MultipartFile file,@RequestParam("resource") String resource) throws JsonMappingException, JsonProcessingException,IOException 
-	{
-		ResourceDetails resourceDet=new ObjectMapper().readValue(resource, ResourceDetails.class);
-		//resourceDet.setPhoto(file.getBytes());
-		resourceDet.setPicturePath("D:/resourcemanagement/src/assets/image/"+file.getOriginalFilename());
-		ResourceDetails resourceDtls=resourceDetailsService.addResource(resourceDet); 
-		
-		if(resourceDtls!=null)
-		{
-		return new ResponseEntity<Response>(new Response("resource details saved success"),HttpStatus.OK);
-		}else
-		{
-			return new ResponseEntity<Response> (new Response("resource details saved not success"),HttpStatus.BAD_REQUEST);
+	public ResponseEntity<Response> addResource(@RequestParam("file") MultipartFile file,
+			@RequestParam("resource") String resource)
+			throws JsonMappingException, JsonProcessingException, IOException {
+		System.out.println("Original Image Byte Size - " + file.getBytes().length);
+		ResourceDetails resourceDet = new ObjectMapper().readValue(resource, ResourceDetails.class);
+		resourceDet.setPhoto(compressBytes(file.getBytes()));
+		resourceDet.setPicturePath(file.getOriginalFilename());
+		ResourceDetails resourceDtls = resourceDetailsService.addResource(resourceDet);
+
+		if (resourceDtls != null) {
+			return new ResponseEntity<Response>(new Response("resource details saved success"), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Response>(new Response("resource details saved not success"),
+					HttpStatus.BAD_REQUEST);
 		}
 	}
-	/*// add resourceDetails
-	@PostMapping("resourcedetails")
-	public ResponseEntity<ResourceDetails> addResource(@RequestBody ResourceDetails resource) {
-		return new ResponseEntity<ResourceDetails>(resourceDetailsService.addResource(resource), HttpStatus.OK);
-	}*/
+	/*
+	 * // add resourceDetails
+	 * 
+	 * @PostMapping("resourcedetails") public ResponseEntity<ResourceDetails>
+	 * addResource(@RequestBody ResourceDetails resource) { return new
+	 * ResponseEntity<ResourceDetails>(resourceDetailsService.addResource(resource),
+	 * HttpStatus.OK); }
+	 */
 
 	// edit resourceDetails
 	@PutMapping("resourcedetails")
@@ -111,11 +120,60 @@ public class ResourceDetailsController {
 	public ResponseEntity<List<ResourceDetails>> listAllResources() {
 		return new ResponseEntity<List<ResourceDetails>>(resourceDetailsService.listAllResource(), HttpStatus.OK);
 	}
-	
+
 	// get all the resource details when is active =y
-		@GetMapping("resourcedetails-isactive")
-		public ResponseEntity<List<ResourceDetails>> listResourcesDetails() {
-			return new ResponseEntity<List<ResourceDetails>>(resourceDetailsService.listResourceDetails(), HttpStatus.OK);
+	@GetMapping("resourcedetails-isactive")
+	public ResponseEntity<List<ResourceDetails>> listResourcesDetails() {
+		return new ResponseEntity<List<ResourceDetails>>(resourceDetailsService.listResourceDetails(), HttpStatus.OK);
+	}
+	
+	@GetMapping("resourcedetails-image")
+	public ResourceDetails getImage(@PathVariable("imageName") String imageName) throws IOException {
+
+		final Optional<ResourceDetails> retrievedImage = resourceDetailsService.findImage(imageName);
+		
+		ResourceDetails img = new ResourceDetails(retrievedImage.get().getPicturePath(),
+				decompressBytes(retrievedImage.get().getPhoto()));
+		return img;
+	}
+
+	// compress the image bytes before storing it in the database
+	public static byte[] compressBytes(byte[] data) {
+		Deflater deflater = new Deflater();
+		deflater.setInput(data);
+		deflater.finish();
+
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
+		byte[] buffer = new byte[1024];
+		while (!deflater.finished()) {
+			int count = deflater.deflate(buffer);
+			outputStream.write(buffer, 0, count);
 		}
+		try {
+			outputStream.close();
+		} catch (IOException e) {
+		}
+		System.out.println("Compressed Image Byte Size - " + outputStream.toByteArray().length);
+
+		return outputStream.toByteArray();
+	}
+
+	// uncompress the image bytes before returning it to the angular application
+	public static byte[] decompressBytes(byte[] data) {
+		Inflater inflater = new Inflater();
+		inflater.setInput(data);
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
+		byte[] buffer = new byte[1024];
+		try {
+			while (!inflater.finished()) {
+				int count = inflater.inflate(buffer);
+				outputStream.write(buffer, 0, count);
+			}
+			outputStream.close();
+		} catch (IOException ioe) {
+		} catch (DataFormatException e) {
+		}
+		return outputStream.toByteArray();
+	}
 
 }

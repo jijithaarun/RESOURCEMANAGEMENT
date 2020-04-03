@@ -16,6 +16,13 @@ public class ResourceDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long resourceId;
 
+	
+	public ResourceDetails( String picturePath,byte[] photo) {
+		super();
+		this.photo = photo;
+		this.picturePath = picturePath;
+	}
+
 	// getting the values from the resource tables and set to foreign key
 	@ManyToOne
 	@JoinColumn(name = "resourceTypeId")
@@ -32,6 +39,7 @@ public class ResourceDetails {
 
 	@Column(nullable = false) // create column with not null
 	private Character whiteBoard;
+	@Column(length=1000)
 	private byte[] photo;
 	private String picturePath;
 
