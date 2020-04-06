@@ -34,4 +34,13 @@ public interface iResourceDetailsRepo extends JpaRepositoryImplementation<Resour
 	@Modifying
 	@Query("update ResourceDetails set isAccepted=?1 where resourceId=?2")
 	void saveIsAccepted(Character isAccepted,Long resourceId);
+	
+	
+	// search by resourceTypeId
+		@Query("from ResourceDetails where resource.resourceTypeId=:id")
+		public List<ResourceDetails> findByResourceType(Long id);
+		
+		// search by resourceTypeId-isactive
+		@Query("from ResourceDetails where resource.resourceTypeId=:id and isActive='Y'")
+		public List<ResourceDetails> findByResourceTypeActive(Long id);
 }

@@ -114,6 +114,18 @@ public class ResourceDetailsController {
 		List<ResourceDetails> viewResourceDetails = resourceDetailsService.findResourcesByName(resourceType);
 		return viewResourceDetails;
 	}
+	
+	@GetMapping("resourcedetails-by-typeid/{id}")
+	public ResponseEntity<List<ResourceDetails>> searchResourceType(@PathVariable("id") Long id) {
+		// method to search by resource type id
+		return new ResponseEntity<List<ResourceDetails>>(resourceDetailsService.searchByResTypeId(id), HttpStatus.OK);
+	}
+	
+	@GetMapping("resourcedetails-typeid-isactive/{id}")
+	public ResponseEntity<List<ResourceDetails>> searchResourceTypeActive(@PathVariable("id") Long id) {
+		// method to search by resource type id
+		return new ResponseEntity<List<ResourceDetails>>(resourceDetailsService.searchByResTypeActive(id), HttpStatus.OK);
+	}
 
 	// get all the resource details
 	@GetMapping("resourcedetails")

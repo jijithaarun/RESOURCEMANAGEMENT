@@ -14,7 +14,6 @@ import com.resource.app.model.User;
 import com.resource.app.repository.IUserRepository;
 
 
-
 @Service
 public class UserService implements IUserService {
 

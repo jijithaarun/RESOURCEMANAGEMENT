@@ -82,4 +82,14 @@ public class ResourceDetailsService implements iResourceDetailsService {
 		return resourceDetailsRepo.findImage(imageName);
 	}
 
+	@Override
+	public List<ResourceDetails> searchByResTypeId(Long id) {
+		return resourceDetailsRepo.findByResourceType(id);
+	}
+
+	@Override
+	public List<ResourceDetails> searchByResTypeActive(Long id) {
+		return resourceDetailsRepo.findByResourceTypeActive(id);
+	}
+
 }

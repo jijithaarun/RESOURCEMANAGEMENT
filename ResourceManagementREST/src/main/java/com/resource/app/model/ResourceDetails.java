@@ -39,6 +39,7 @@ public class ResourceDetails {
 
 	@Column(nullable = false) // create column with not null
 	private Character whiteBoard;
+	
 	@Column(length=1000)
 	private byte[] photo;
 	private String picturePath;

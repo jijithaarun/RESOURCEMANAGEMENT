@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.resource.app.model.ResourceDetails;
 
 public interface iResourceDetailsService {
+	
 	public ResourceDetails addResource(ResourceDetails resourceDetails);
 
 	public ResourceDetails updateResource(ResourceDetails resourceDetails);
@@ -27,6 +28,11 @@ public interface iResourceDetailsService {
 	public List<ResourceDetails> listResourceDetails();
 	
 	public Optional<ResourceDetails> findImage(String imageName);
+	
+	public List<ResourceDetails> searchByResTypeId(Long id);
+
+	public List<ResourceDetails> searchByResTypeActive(Long id);
+	
 	
 
 
