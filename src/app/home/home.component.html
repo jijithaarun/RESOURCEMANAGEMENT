@@ -1,0 +1,56 @@
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+    <div class="input-field first-wrap">
+        <div style="margin-left: 500px;">
+            <form [formGroup]="searchResource" novalidate (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0">
+
+                <!-- RESOURCE TYPE-->
+                <div class="form-group">
+                    <label class="col-md-4">Search Resource </label>
+                    <select formControlName="resourceTypeId" class="form-control mr-sm-2" required>
+                        <option value="" disabled>Choose Asset Type</option>
+                        <option *ngFor="let resource of resourceType | async" value="{{resource.resourceTypeId}}">
+                            {{resource.resourceType}}</option>
+                    </select>  
+                </div>
+                <div *ngIf="searchResource.controls['resourceTypeId'].invalid && (searchResource.controls['resourceTypeId'].dirty || searchResource.controls['resourceTypeId'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="searchResource.controls['resourceTypeId'].errors.required">
+                        Field is required.
+                    </div>
+                </div>
+                <div class="input-field second-wrap">
+                    <button type="submit" class="btn-search"
+                        [disabled]="searchResource.pristine || searchResource.invalid">
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+<app-resourceapp></app-resourceapp>
+<div class="card shadow mb-4 col-sm-8" style="margin-left: 400px;margin-top: -640px;">
+    <h1 style="color: blue;text-align: center;">Resources</h1>
+
+    <div class="card-body">
+        <ul>
+            <li *ngFor="let res of resources | async">
+                {{res.resource.resourceType}}<br>
+                Rate(per month): {{res.resourceRate}}
+                <p *ngIf="res.typeOfUse==='internal'"><span class="badge badge-dark">Internal Use</span></p>
+                <p *ngIf="res.typeOfUse==='external'"><span class="badge badge-danger">External Use</span></p>
+                <p *ngIf="res.typeOfUse===''"><span class="badge badge-success">Available</span></p>
+                <br>
+                <br>
+                <p><a (click)="viewResource(res.resourceId)" class="btn btn-info">More Details--></a> </p>
+            </li>
+        </ul> 
+    </div>
+</div>
+ <router-outlet></router-outlet>
+
+
+

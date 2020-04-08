@@ -1,0 +1,33 @@
+<div class="panel panel-primary">
+    <div class="panel-heading ">
+        <h2>ResourceType List</h2>
+
+        <a [routerLink]="['/coordinator/addResourceType']" class="btn btn-info" style="margin-left:800px">Create User</a>
+
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover">
+
+            <tr>
+                <th>#ID</th>
+                <th>Resource Type </th>
+                <th>Action</th>
+            </tr>
+
+
+            <tr *ngFor="let resource of resources | async | paginate: { itemsPerPage: 4, currentPage: p }; let i=index">
+                <td>{{resource.resourceTypeId}}</td>
+                <td>{{resource.resourceType}}</td>
+                <td>
+                    <button class="btn btn-danger">Delete</button>
+                    <button (click)="editResource(resource.resourceTypeId)" class="btn btn-info"
+                        style="margin-left: 10px">Edit</button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<pagination-controls (pageChange)="p=($event)">
+</pagination-controls>

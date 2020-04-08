@@ -1,0 +1,49 @@
+<div class="container d-flex align-items-stretch">
+    <nav id="sidebar" class="img" style="background-image: url(images/bg_1.jpg);">
+      <div class="p-4">
+        <h2><a href="" class="logo">Manager Menu <span>Welcome {{userName}}</span></a></h2>
+        <br>
+        <br>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+            <a href="#" routerLink="/mainadmin/adduser"><span class="fas fa-inbox"></span>Add user</a>
+          </li>
+          <li>
+            <a href="#" routerLink="/mainadmin/viewuser"><span class="fas fa-inbox"></span>View User</a>
+          </li>
+          <li>
+            <a href="#" (click)="logout()"><span class="fas fa-sign-out-alt"></span> Logout</a>
+          </li>
+          <br>
+          <br>
+          <br>
+          <br>
+  
+        </ul>
+        <div class="mb-5">
+          <h3 class="h6 mb-3"></h3>
+          <form action="#" class="subscribe-form">
+            <div class="form-group d-flex">
+              <div class="icon"><span class="icon-paper-plane"></span>
+                <br>
+                <br>
+              </div>
+              <br>
+              <br>
+             
+            </div>
+          </form>
+        </div>
+        <div class="footer">
+          <p>
+            Copyright &copy;
+            <script type="7f590e3e104c298368319489-text/javascript">document.write(new Date().getFullYear());</script> All
+            rights reserved
+          </p>
+        </div>
+      </div>
+    </nav>
+  
+    <router-outlet></router-outlet>
+  
+  

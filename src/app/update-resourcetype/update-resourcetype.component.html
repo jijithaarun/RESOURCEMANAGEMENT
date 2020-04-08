@@ -1,0 +1,42 @@
+
+<div class="panel panel-primary">
+    <div class="panel-heading ">
+        <h2>Update Resource Type</h2>
+
+    </div>
+    <div class="panel-body">
+        <hr />
+
+        <div style="width: 400px;">
+            <form [formGroup]="editResourceForm" novalidate (ngSubmit)="onSubmit()">
+
+                <!--RESOURCE TYPE ID HIDDEN-->
+                <input type="hidden" formControlName="resourceTypeId" [(ngModel)]="resource.resourceTypeId"/>
+               
+                <!-- RESOURCE TYPE-->
+                <div class="form-group">
+                    <label class="col-md-4">Resource Type</label>
+                    <input type="text" class="form-control" required formControlName="resourceType" 
+                    [(ngModel)]="resource.resourceType" />
+                </div>
+                <div *ngIf="editResourceForm.controls['resourceType'].invalid && (editResourceForm.controls['resourceType'].dirty || editResourceForm.controls['resourceType'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="editResourceForm.controls['resourceType'].errors.required">
+                        Field is required.
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"
+                        [disabled]="editResourceForm.pristine || editResourceForm.invalid">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+
+
+     
+    </div>
+</div>

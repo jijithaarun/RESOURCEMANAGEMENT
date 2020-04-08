@@ -1,0 +1,114 @@
+<div class="container-fluid" >
+    <div class="panel-heading ">
+        <h2>Create Resource</h2>
+
+    </div>
+        <hr />
+       <div >
+            <form [formGroup]="addResourceForm" style="width: 600px;" novalidate (ngSubmit)="onSubmit()">
+                <!-- RESOURCE TYPE-->
+                <div [formGroup]="addResourceType">
+                    <div class="form-group">
+                        <label class="col-md-4">Resource Type </label>
+                        <select formControlName="resourceTypeId" class="form-control" required>
+                            <option value="" disabled>Choose Asset Type</option>
+                            <option *ngFor="let resource of resourceType | async" value="{{resource.resourceTypeId}}">
+                                {{resource.resourceType}}</option>
+                        </select>   
+
+                    </div>
+                    <div *ngIf="addResourceType.controls['resourceTypeId'].invalid && (addResourceType.controls['resourceTypeId'].dirty || addResourceType.controls['resourceTypeId'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="addResourceType.controls['resourceTypeId'].errors.required">
+                            Field is required.
+                        </div>
+                    </div>
+                </div>
+           
+                <!-- RESOURCE CAPACITY-->
+                <div class="form-group">
+                    <label class="col-md-4">Resource Capacity</label>
+                    <input type="number" class="form-control" required formControlName="resourceCapacity">
+                </div>
+                <div *ngIf="addResourceForm.controls['resourceCapacity'].invalid && (addResourceForm.controls['resourceCapacity'].dirty || addResourceForm.controls['resourceCapacity'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="addResourceForm.controls['resourceCapacity'].errors.required">
+                        Field is required.
+                    </div>
+                </div>
+               
+                <!-- NUMBER OF SYSTEM-->
+                <div class="form-group">
+                    <label class="col-md-4">Number of System</label>
+                    <input type="number" class="form-control" required formControlName="noOfSystems">
+                </div>
+                <div *ngIf="addResourceForm.controls['noOfSystems'].invalid && (addResourceForm.controls['noOfSystems'].dirty || addResourceForm.controls['noOfSystems'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="addResourceForm.controls['noOfSystems'].errors.required">
+                        Field is required.
+                    </div>
+                </div>
+              
+                <!-- PROJECTOR-->
+                <div class="form-group">
+                    <label class="col-md-4" >Projector</label>
+                    <input type="radio" value="Y" name="projector" class="form-check-input" required
+                        formControlName="projector"> YES  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" value="N" name="projector" class="form-check-input" required
+                        formControlName="projector"> NO
+                </div>
+                <div *ngIf="addResourceForm.controls['projector'].invalid && (addResourceForm.controls['projector'].dirty || addResourceForm.controls['projector'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="addResourceForm.controls['projector'].errors.required">
+                        Field is required.
+                    </div>
+                </div>
+              
+                <!-- WHITEBOARD -->
+                <div class="form-group">
+                    <label class="col-md-4">White Board</label>
+                    <input type="radio" value="Y" name="whiteBoard" class="form-check-input" required
+                        formControlName="whiteBoard"> YES  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" value="N" name="whiteBoard" class="form-check-input" required
+                        formControlName="whiteBoard"> NO
+                </div>
+                <div *ngIf="addResourceForm.controls['whiteBoard'].invalid && (addResourceForm.controls['whiteBoard'].dirty || addResourceForm.controls['whiteBoard'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="addResourceForm.controls['whiteBoard'].errors.required">
+                        Field is required.
+                    </div>
+                </div>
+                <br>
+                <!-- RESOURCE RATE -->
+                <div class="form-group">
+                    <label class="col-md-4">Resource Rate</label>
+                    <input type="number" class="form-control" required formControlName="resourceRate">
+
+                </div>
+                <div *ngIf="addResourceForm.controls['resourceRate'].invalid && (addResourceForm.controls['resourceRate'].dirty || addResourceForm.controls['resourceRate'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="addResourceForm.controls['resourceRate'].errors.required">
+                        Field is required.
+                    </div>
+                </div>
+           
+               <div>
+                   <label for="file">File Upload:</label>
+                    <input  type="file" id="image"  formControlName="photo" (change)="onSelectFile($event)" style="height:100%"> 
+                </div>
+                <div *ngIf="addResourceForm.controls['photo'].invalid && (addResourceForm.controls['photo'].dirty || addResourceForm.controls['photo'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="addResourceForm.controls['photo'].errors.required">
+                    Field is required.
+                </div>
+            </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"
+                        [disabled]="addResourceForm.pristine || addResourceForm.invalid">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+</div>

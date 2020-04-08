@@ -1,0 +1,36 @@
+<a routerLink=""><button class="btn btn-primary">Go to HomePage</button></a> 
+<div class="login-form" style="margin-left:200px;">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="avatar">
+            <img src="assets/image/avatar.png" alt="Avatar">
+        </div>
+        <h2 class="text-center">Member Login</h2>
+
+
+        <div class="form-group" [ngClass]="{'has-error':isSubmitted && formControls.userName.errors}">
+            <input type="text" class="form-control" name="userName" placeholder="Username" formControlName='userName' autocomplete="off">
+        </div>
+
+        <div *ngIf="isSubmitted && formControls.userName.errors" class="help-block">
+            <div *ngIf="formControls.userName.errors.required" style="color: red">Email is required</div>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error':isSubmitted && formControls.password.errors}">
+            <input type="password" class="form-control" name="password" placeholder="Password"
+                formControlName='password'>
+        </div>
+
+        <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+            <div *ngIf="formControls.password.errors.required" style="color: red">Password is required</div>
+        </div>
+      
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+        </div>
+        <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            <a href="#" class="pull-right">Forgot Password?</a>
+        </div>
+    </form>
+    <p class="text-center small">Don't have an account? <a href="#" style="color:blue">Sign up here!</a></p>
+</div>
