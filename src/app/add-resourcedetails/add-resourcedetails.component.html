@@ -93,8 +93,11 @@
                 </div>
            
                <div>
+                   
                    <label for="file">File Upload:</label>
-                    <input  type="file" id="image"  formControlName="photo" (change)="onSelectFile($event)" style="height:100%"> 
+                    <input  type="file" id="image" accept='assets/image/*'  (change)="onSelectFile($event)" style="height:100%" formControlName="photo"> 
+                  
+                    <button type="button" (click)="onUpload()">Upload</button>
                 </div>
                 <div *ngIf="addResourceForm.controls['photo'].invalid && (addResourceForm.controls['photo'].dirty || addResourceForm.controls['photo'].touched)"
                 class="alert alert-danger">
