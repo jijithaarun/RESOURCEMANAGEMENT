@@ -43,6 +43,6 @@ export class AddResourcetypeComponent implements OnInit {
       data=>console.log(data), error=> console.log(error)
     );
     this.toastr.success('New Resource Successfully Created','Creating ResourceType');
-    this.router.navigateByUrl('/admin/viewResourceType');
+    this.router.navigateByUrl('/coordinator/viewResourceType');
   }
 }

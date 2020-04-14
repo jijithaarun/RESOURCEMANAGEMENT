@@ -1,9 +1,6 @@
-
-
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="input-field first-wrap">
-        <div style="margin-left: 500px;">
+        <div style="margin-left: 400px;">
             <form [formGroup]="searchResource" novalidate (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0">
 
                 <!-- RESOURCE TYPE-->
@@ -32,22 +29,24 @@
     </div>
 </nav>
 <app-resourceapp></app-resourceapp>
-<div class="card shadow mb-4 col-sm-8" style="margin-left: 400px;margin-top: -640px;">
-    <h1 style="color: blue;text-align: center;">Resources</h1>
 
-    <div class="card-body">
-        <ul>
-            <li *ngFor="let res of resources | async">
-                {{res.resource.resourceType}}<br>
-                Rate(per month): {{res.resourceRate}}
-                <p *ngIf="res.typeOfUse==='internal'"><span class="badge badge-dark">Internal Use</span></p>
-                <p *ngIf="res.typeOfUse==='external'"><span class="badge badge-danger">External Use</span></p>
-                <p *ngIf="res.typeOfUse===''"><span class="badge badge-success">Available</span></p>
-                <br>
-                <br>
-                <p><a (click)="viewResource(res.resourceId)" class="btn btn-info">More Details--></a> </p>
-            </li>
-        </ul> 
+<div class="col-md-8" style="margin-left:350px;margin-top: -600px;">
+    <div class="product_list">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6">
+                <div class="single_product_item" *ngFor="let res of resources | async">
+                    <img src="assets/image/{{res.picturePath}}" alt="#" class="img-fluid">
+                    {{res.resource.resourceType}}<br>
+                    Rate(per month): {{res.resourceRate}}
+                    
+                    <p *ngIf="res.typeOfUse==='internal'"><span class="badge badge-dark">Internal Use</span></p>
+                    <p *ngIf="res.typeOfUse==='external'"><span class="badge badge-danger">External Use</span></p>
+                    <p *ngIf="res.typeOfUse===''"><span class="badge badge-success">Available</span></p>
+                    <h3> <a (click)="viewResource(res.resourceId)" class="btn btn-info">More Details--></a> </h3>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 </div>
  <router-outlet></router-outlet>

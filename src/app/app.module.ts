@@ -32,8 +32,6 @@ import { CoordinatorComponent } from './coordinator/coordinator.component';
 import { ManagerComponent } from './manager/manager.component';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { ResourceappComponent } from './resourceapp/resourceapp.component';
-import { RegisterComponent } from './register/register.component';
-import { MultiplequalificationComponent } from './multiplequalification/multiplequalification.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 
 
@@ -61,8 +59,6 @@ import { AddCourseComponent } from './add-course/add-course.component';
     ManagerComponent,
     ViewUserComponent,
     ResourceappComponent,
-    RegisterComponent,
-    MultiplequalificationComponent,
     AddCourseComponent,
     
 

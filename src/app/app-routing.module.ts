@@ -19,8 +19,6 @@ import { MainadminComponent } from './mainadmin/mainadmin.component';
 import { ManagerComponent } from './manager/manager.component';
 import { CoordinatorComponent } from './coordinator/coordinator.component';
 import { ViewUserComponent } from './view-user/view-user.component';
-import { RegisterComponent } from './register/register.component';
-import { MultiplequalificationComponent } from './multiplequalification/multiplequalification.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 
 
@@ -63,15 +61,9 @@ const routes: Routes = [
       { path: "barChart/:resourceId", component: BarChartComponent },
       { path: "viewReport", component: ViewReportComponent }
     ]
-  },
-  {
-    path: "registration", component: RegisterComponent,
-    children: [
-      { path: "mulQualification/:registrationId", component: MultiplequalificationComponent }]
   }
 
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

@@ -64,21 +64,6 @@ export class AddResourcedetailsComponent implements OnInit {
 
   }
 
-  onUpload()
-  {
-    const formData=new FormData();
-    formData.append('photo',this.resourceFile,this.resourceFile.name);
-  
-    this.http.post('assets/image/',formData,{observe:'response'}).subscribe((response)=>{
-      if(response.status===200)
-      {
-        this.toastr.success('Image successfully added');
-      }else
-      {
-        this.toastr.error('Image not successfully added');
-      }
-    });
-  }
 
 
   onSubmit() {
@@ -113,7 +98,7 @@ export class AddResourcedetailsComponent implements OnInit {
       data => console.log(data), error => console.log(error)
     );
     this.toastr.success('New Resource Successfully Created', 'Creating ResourceType');
-    this.router.navigateByUrl('/admin/viewResourceDetails');
+    this.router.navigateByUrl('/coordinator/viewResourceDetails');
 
     
     
