@@ -1,0 +1,41 @@
+<div class="panel panel-primary">
+    <div class="panel-heading ">
+        <h2>Bookings</h2>
+
+       
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#ID</th>
+                    <th>Resource Name </th>
+                    <th>Customer Name </th>
+                    <th>Phone </th>
+                    <th>Start Date </th>
+                    <th>End Date </th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let booking of bookings | async | paginate: { itemsPerPage: 4, currentPage: p }; let i=index">
+                   
+                    <td>{{booking.bookingId}}</td>
+                    <td>{{booking.resourceDetails.resource.resourceType}}</td>
+                    <td>{{booking.custName}}</td>
+                    <td>{{booking.phoneNumber}}</td>
+                    <td>{{booking.startDate}}</td>
+                    <td>{{booking.endDate}}</td>
+                    <td>
+                        <button (click)="viewBooking(booking.bookingId)" class="btn btn-info"
+                            style="margin-left: 10px">More Details</button>
+                      
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<pagination-controls (pageChange)="p=($event)">
+</pagination-controls>

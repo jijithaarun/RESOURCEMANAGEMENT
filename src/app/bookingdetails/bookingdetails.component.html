@@ -1,0 +1,86 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Resource Details</h2>
+    </div>
+    <div class="panel-body">
+        <table>
+            <tr>
+                <td><b>Resource Name</b></td>
+                <td>&nbsp;{{booking.resourceDetails.resource.resourceType}}</td>
+            </tr>
+            <tr>
+                <td><b>Resource Capacity</b></td>
+                <td>&nbsp;{{booking.resourceDetails.resourceCapacity}}</td>
+            </tr>
+            <tr>
+                <td><b>Number of System</b></td>
+                <td>&nbsp;{{booking.resourceDetails.noOfSystems}}</td>
+            </tr>
+            <tr>
+                <td><b>Projector</b></td>
+                <td>&nbsp;{{booking.resourceDetails.projector}}</td>
+            </tr>
+            <tr>
+                <td><b>White Board</b></td>
+                <td>&nbsp;{{booking.resourceDetails.whiteBoard}}</td>
+            </tr>
+            <tr>
+                <td><b>Resource Rate</b></td>
+                <td>&nbsp;{{booking.resourceDetails.resourceRate}}</td>
+            </tr>
+            <tr>
+                <td><b>Type of Use</b></td>
+                <td>&nbsp;{{booking.resourceDetails.typeOfUse}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<br>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Booking Details</h2>
+
+    </div>
+    <div class="panel-body">
+        <table>
+            <tr>
+                <td><b>Customer Name</b></td>
+                <td>&nbsp;{{booking.custName}}</td>
+            </tr>
+            <tr>
+                <td><b>Address&nbsp;</b></td>
+                <td>&nbsp;{{booking.custAddress}}</td>
+            </tr>
+            <tr>
+                <td><b>Phone Number</b></td>
+                <td>&nbsp;{{booking.phoneNumber}}</td>
+            </tr>
+            <tr>
+                <td><b>Email ID</b></td>
+                <td>&nbsp;{{booking.email}}</td>
+            </tr>
+            <tr>
+                <td><b>Start Date</b></td>
+                <td>&nbsp;{{booking.startDate}}</td>
+            </tr>
+            <tr>
+                <td><b>End Date</b></td>
+                <td>&nbsp;{{booking.endDate}}</td>
+            </tr>
+            <tr>
+                <td><b>Purpose</b></td>
+                <td>&nbsp;{{booking.purpose}}</td>
+            </tr>
+        </table>
+
+        <br>
+        <br>
+        <button (click)="acceptBooking(booking.bookingId)" class="btn btn-primary">Accept</button>
+        &nbsp;
+        <button (click)="rejectBooking(booking.bookingId)" class="btn btn-primary">Reject</button>
+        <br>
+    </div>
+</div>

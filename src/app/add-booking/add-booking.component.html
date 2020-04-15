@@ -1,0 +1,145 @@
+<div class="container" style="width: 500px;">
+    <div class="panel-heading ">
+        <h2>Booking Form</h2>
+    </div>
+    <div>
+        <hr />
+        <form [formGroup]="addBookingForm" novalidate (ngSubmit)="onSubmit()">
+
+            <!--RESOURCE ID HIDDEN-->
+            <div [formGroup]="addResourceForm">
+                <input type="hidden" formControlName="resourceId" />
+            </div>
+            <table>
+                <tr>
+                    <td style="font-size: 20px;">
+                        Resource Name:
+                    </td>
+                    <td style="font-size: 20px;">
+                        {{res.resource.resourceType}}
+                    </td>
+                </tr>
+            </table>
+            <!-- CUSTOMER NAME -->
+            <div class="form-group">
+                <label class="col-md-4">Name</label>
+                <input type="text" class="form-control" required formControlName="custName" pattern="[a-zA-Z ]*"
+                    placeholder="Name*" />
+            </div>
+            <div *ngIf="addBookingForm.controls['custName'].invalid && (addBookingForm.controls['custName'].dirty || addBookingForm.controls['custName'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="addBookingForm.controls['custName'].errors.required">
+                    Name is required.
+                </div>
+                <div *ngIf="addBookingForm.controls['custName'].errors.minlength">
+                    Name minimum length is 4
+                </div>
+                <div *ngIf="addBookingForm.controls['custName'].errors.maxlength">
+                    Name maximum length is 20
+                </div>
+                <div *ngIf="addBookingForm.controls['custName'].errors.pattern">
+                    only alphabets are allowed
+                </div>
+            </div>
+
+
+
+            <!-- CUSTOMER ADDRESS-->
+            <div class="form-group">
+
+                <label class="col-md-4">ADDRESS</label>
+                <input type="text" class="form-control" required formControlName="custAddress"
+                    pattern="^[a-zA-Z0-9_-]{8,15}$" placeholder="Address*">
+            </div>
+            <div *ngIf="addBookingForm.controls['custAddress'].invalid && (addBookingForm.controls['custAddress'].dirty || addBookingForm.controls['custAddress'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="addBookingForm.controls['custAddress'].errors.required">
+                    Address is required.
+                </div>
+                <div *ngIf="addBookingForm.controls['custAddress'].errors.pattern">
+                    only alphabets and numbers are allowed
+                </div>
+                <div *ngIf="addBookingForm.controls['custAddress'].errors.maxlength">
+                    30 characters are allowed
+                </div>
+            </div>
+
+            <!-- Phone Number-->
+            <div class="form-group">
+                <label class="col-md-4">Phone Number</label>
+                <input type="text" class="form-control" required formControlName="phoneNumber"
+                    pattern="^((\\+91-?)|0)?[0-9]{10}$" placeholder="Phonenumber*">
+            </div>
+            <div *ngIf="addBookingForm.controls['phoneNumber'].invalid && (addBookingForm.controls['phoneNumber'].dirty || addBookingForm.controls['phoneNumber'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="addBookingForm.controls['phoneNumber'].errors.required">
+                    Phone Number is required.
+                </div>
+                <div *ngIf="addBookingForm.controls['phoneNumber'].errors.pattern">
+                    Phone Number only allowed numbers
+                </div>
+            </div>
+
+            <!-- EMAIL-->
+            <div class="form-group">
+                <label class="col-md-4">Email</label>
+                <input type="email" class="form-control" required formControlName="email"
+                    placeholder="Enter your email*">
+            </div>
+            <div *ngIf="addBookingForm.controls['email'].invalid && (addBookingForm.controls['email'].dirty || addBookingForm.controls['email'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="addBookingForm.controls['email'].errors.required">
+                    Email is required.
+                </div>
+            </div>
+
+            <!-- START DATE FROM-->
+            <div class="form-group">
+                <label class="col-md-4">Start Date</label>
+                <input type="date" class="form-control" required min="{{todate | date:'yyyy-MM-dd'}}"
+                    formControlName="startDate">
+            </div>
+            <div *ngIf="addBookingForm.controls['startDate'].invalid && (addBookingForm.controls['startDate'].dirty || addBookingForm.controls['startDate'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="addBookingForm.controls['startDate'].errors.required">
+                    Start Date is required.
+                </div>
+            </div>
+
+            <!-- END DATE TO-->
+            <div class="form-group">
+                <label class="col-md-4">start Date</label>
+                <input type="date" class="form-control" required
+                    min="{{this.addBookingForm.controls.startDate.value | date:'yyyy-MM-dd'}}"
+                    formControlName="endDate">
+            </div>
+            <div *ngIf="addBookingForm.controls['endDate'].invalid && (addBookingForm.controls['endDate'].dirty || addBookingForm.controls['endDate'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="addBookingForm.controls['endDate'].errors.required">
+                    End Date is required.
+                </div>
+            </div>
+
+            <!-- PURPOSE-->
+            <div class="form-group">
+                <label class="col-md-4">PURPOSE</label>
+                <input type="textArea" class="form-control" required formControlName="purpose"
+                    placeholder="Enter the purpose">
+            </div>
+            <div *ngIf="addBookingForm.controls['purpose'].invalid && (addBookingForm.controls['purpose'].dirty || addBookingForm.controls['purpose'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="addBookingForm.controls['purpose'].errors.required">
+                    Purpose is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"
+                    [disabled]="addBookingForm.pristine || addBookingForm.invalid">
+                    Submit
+                </button>&nbsp;&nbsp;&nbsp;
+                <a routerLink=""><button class="btn btn-primary">Go to HomePage</button></a>
+
+            </div>
+        </form>
+    </div>

@@ -1,0 +1,60 @@
+<div class="container">
+
+    <form [formGroup]="reportForm" novalidate (ngSubmit)="onSubmit()">
+
+     
+        <!-- DATE -->
+        <div class="form-group">
+            <label class="col-md-4">Choose a Start Date</label>
+            <input type="date" class="form-control" required max="{{todate | date:'yyyy-MM-dd'}}"
+                formControlName="date">
+        </div>
+        <div *ngIf="reportForm.controls['date'].invalid && (reportForm.controls['date'].dirty || reportForm.controls['date'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="reportForm.controls['date'].errors.required">
+                Start Date is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4">Choose a End Date</label>
+            <input type="date" class="form-control" required
+                formControlName="endDate">
+        </div>
+        <div *ngIf="reportForm.controls['endDate'].invalid && (reportForm.controls['endDate'].dirty || reportForm.controls['endDate'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="reportForm.controls['endDate'].errors.required">
+                end Date is required.
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="reportForm.pristine || reportForm.invalid">
+                Submit
+            </button>
+
+        </div>
+    </form>
+</div>
+
+<table>
+    <tr><td>Enquiry: </td><td>{{enquiry}} </td></tr>
+    <tr><td>Accepted:</td><td>{{accepted}}</td></tr>
+    <tr><td>Rejected:</td><td>{{rejected}}</td></tr>
+</table>
+<br>
+<br>
+
+
+
+
+<div class="container" [hidden]="submitted">
+
+    <div class="chart-wrapper">
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+            [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+        </canvas>
+    </div>
+
+</div>

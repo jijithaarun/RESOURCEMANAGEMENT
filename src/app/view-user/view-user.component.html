@@ -1,0 +1,32 @@
+<div class="panel panel-primary">
+    <div class="panel-heading ">
+        <h2>User List</h2>
+
+        <a [routerLink]="['/mainadmin/adduser']" class="btn btn-info" style="margin-left:800px">Create User</a>
+
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#ID</th>
+                    <th>USERNAME</th>
+                    <th>PASSWORD</th>
+                    <th>ROLEID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let user of users | async | paginate: { itemsPerPage: 4, currentPage: p }; let i=index">
+                    <td>{{user.id}}</td>
+                    <td>{{user.userName}}</td>
+                    <td>{{user.roleDetails.roleName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<pagination-controls 
+    (pageChange)="p=($event)">
+</pagination-controls>

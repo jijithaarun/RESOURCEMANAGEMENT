@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="col-sm-4">
+         <app-resourceapp></app-resourceapp> 
+    </div>
+
+
+    <div class="card shadow mb-4 col-sm-8" style="margin-left: 320px;margin-top: -600px;">
+        <h1 style="color: blue;text-align: center;">Resources</h1>
+
+        <div class="card-body">
+            <ul>
+                <li *ngFor="let res of resources | async">
+                    {{res.resource.resourceType}}<br>
+                    Rate(per month): {{res.resourceRate}}
+                    <p *ngIf="res.typeOfUse==='internal'"><span class="badge badge-dark">Internal Use</span></p>
+                    <p *ngIf="res.typeOfUse==='external'"><span class="badge badge-danger">External Use</span></p>
+                    <p *ngIf="res.typeOfUse===''"><span class="badge badge-success">Available</span></p>
+                    <br>
+                    <br>
+                    <p><a (click)="viewResource(res.resourceId)" class="btn btn-info">More Details--></a> </p>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+</div>
+<router-outlet></router-outlet>

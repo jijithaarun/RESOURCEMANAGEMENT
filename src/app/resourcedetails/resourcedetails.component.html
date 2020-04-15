@@ -1,0 +1,76 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 style="margin-left: 100px;">Resource Details</h2>
+
+    </div>
+    <div class="panel-body">
+
+
+        <table style="margin-left: 100px;">
+            <tr>
+                <td><b>Resource Type:</b></td>
+                <td>{{res.resource.resourceType}}</td>
+            </tr>
+            <tr>
+                <td><b>Resource Capacity</b></td>
+                <td>{{res.resourceCapacity}}</td>
+            </tr>
+            <tr>
+                <td><b>Number of System:</b></td>
+                <td>{{res.noOfSystems}}</td>
+            </tr>
+            <tr>
+                <td><b>Projector:</b></td>
+                <td>{{res.projector}}</td>
+            </tr>
+            <tr>
+                <td><b>White Board:</b></td>
+                <td>{{res.whiteBoard}}</td>
+            </tr>
+            <tr>
+                <td><b>Resource Rate:</b></td>
+                <td>{{res.resourceRate}}</td>
+            </tr>
+            <tr>
+                <td><b>Type of Use:</b></td>
+                <td>{{res.typeOfUse}}</td>
+            </tr>
+
+        </table>
+
+<!--
+
+        <div>
+            <div>
+                <label><b>Resource Type:</b></label>{{res.resource.resourceType}}
+            </div>
+            <div>
+                <label><b>Resource Capacity</b></label>{{res.resourceCapacity}}
+            </div>
+            <div>
+                <label><b>Number of System:</b></label>{{res.noOfSystems}}
+            </div>
+            <div>
+                <label><b>Projector:</b></label>{{res.projector}}
+            </div>
+            <div>
+                <label><b>White Board:</b></label>{{res.whiteBoard}}
+            </div>
+
+            <div>
+                <label><b>Resource Rate:</b></label>{{res.resourceRate}}
+            </div>
+            <div>
+                <label><b>Type of Use:</b></label>{{res.typeOfUse}}
+            </div>
+
+        </div>
+-->
+
+        <br>
+        <br>
+        <button (click)="book(res.resourceId)" class="btn btn-primary" style="margin-left: 100px;">Book</button>&nbsp;&nbsp;&nbsp;
+       <a routerLink=""><button class="btn btn-primary">Go to HomePage</button></a> 
+        <br>
+    </div>
+</div>
