@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "resourcemanagement": {
+    "ResourceEnquiry": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/resourcemanagement",
+            "outputPath": "dist/ResourceEnquiry",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,15 +25,10 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/sassets/image"
-              
+              "src/assets"
             ],
             "styles": [
-              "src/styles.scss",        
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/ngx-toastr/toastr.css"
-            
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -71,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "resourcemanagement:build"
+            "browserTarget": "ResourceEnquiry:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "resourcemanagement:build:production"
+              "browserTarget": "ResourceEnquiry:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "resourcemanagement:build"
+            "browserTarget": "ResourceEnquiry:build"
           }
         },
         "test": {
@@ -119,19 +114,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "resourcemanagement:serve"
+            "devServerTarget": "ResourceEnquiry:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "resourcemanagement:serve:production"
+              "devServerTarget": "ResourceEnquiry:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "resourcemanagement",
+  "defaultProject": "ResourceEnquiry",
   "cli": {
-    "analytics": "e230006a-4b99-41a3-a028-8406d288b66e"
+    "analytics": "1ecb796c-0088-472a-825a-9165f5a6f29f"
   }
 }
