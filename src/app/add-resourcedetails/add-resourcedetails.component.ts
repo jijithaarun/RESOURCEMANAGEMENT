@@ -26,6 +26,7 @@ export class AddResourcedetailsComponent implements OnInit {
     private resourceService: ResourceService,
     private router: Router,
     private toastr: ToastrService) { }
+    
 
   ngOnInit(): void {
     this.createForm();
