@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "ResourceEnquiry": {
+    "resource": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ResourceEnquiry",
+            "outputPath": "dist/resource",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ResourceEnquiry:build"
+            "browserTarget": "resource:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ResourceEnquiry:build:production"
+              "browserTarget": "resource:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ResourceEnquiry:build"
+            "browserTarget": "resource:build"
           }
         },
         "test": {
@@ -114,19 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ResourceEnquiry:serve"
+            "devServerTarget": "resource:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ResourceEnquiry:serve:production"
+              "devServerTarget": "resource:serve:production"
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "ResourceEnquiry",
-  "cli": {
-    "analytics": "1ecb796c-0088-472a-825a-9165f5a6f29f"
-  }
+    }},
+  "defaultProject": "resource"
 }
